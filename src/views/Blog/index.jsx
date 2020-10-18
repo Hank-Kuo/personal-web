@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Progress from '../../lib/hoc/progress';
+import Progress from '../../core/hoc/progress';
 import Card from '../../components/Card';
 import { S } from './styles';
 
@@ -18,6 +18,7 @@ class Blog extends Component {
                 createTime="2020/11/23"
                 tags={['NLP', 'ML']}
                 img={''}
+                
               />
               <Card
                 id={1}

@@ -3,7 +3,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #0a0809;
-  font-family: librebaskerville-regular, serif;
+  font-family: 'Noto Sans SC', sans-serif; 
   font-size: 1.6rem;
   line-height: 1.875;
   color: #5f5f5f;

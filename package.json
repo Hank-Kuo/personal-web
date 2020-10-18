@@ -7,13 +7,17 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "bootstrap": "^4.5.3",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
+    "react-ga": "^3.2.0",
     "react-markdown": "^4.3.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "universal-cookie": "^4.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,7 +26,6 @@
     "build": "rm -rf ./docs/* && webpack --config ./webpack.production.config.js --progress && ls ./docs",
     "deploy-dev": "cp docs/index.html docs/200.html && surge docs/ healthy-vest.surge.sh",
     "deploy": "cp docs/index.html docs/200.html && surge docs/ hank-kuo.surge.sh"
-
   },
   "browserslist": {
     "production": [
@@ -58,6 +61,8 @@
     "md-react-loader": "^0.1.6",
     "open-browser-webpack-plugin": "^0.0.5",
     "precss": "^4.0.0",
+    "raw-loader": "^4.0.2",
+    "react-markdown-loader": "^1.3.1",
     "style-loader": "^1.3.0",
     "surge": "^0.21.6",
     "uglifyjs-webpack-plugin": "^2.2.0",

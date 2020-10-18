@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Progress from '../../lib/hoc/progress';
+import Progress from '../../core/hoc/progress';
 import { S } from './styles';
 
 class Contact extends Component {

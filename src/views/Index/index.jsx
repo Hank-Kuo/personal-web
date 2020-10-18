@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
-import Progress from '../../lib/hoc/progress';
+import Progress from '../../core/hoc/progress';
 import { S } from './styles';
 
 import IMG from '../../assets/images/home3.jpg';
@@ -15,9 +16,10 @@ class Index extends Component {
         <S.Overlay />
         <S.Wrapper>
           <S.Section>
+
             <S.Box>
               <S.Title>
-                I am Hank Kuo,
+                I am Hank Kuo
                 <br /> good at software development and ML related.
               </S.Title>
               <S.BtnList>

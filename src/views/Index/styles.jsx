@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { device } from '../../lib/styles';
+import { device } from '../../core/constants/styles';
 
 export const S = {
   Overlay: styled.div`
-    position: absolute;
+    position: fixed;
     display: table;
     background-color: black;
     opacity: 0.6;
@@ -30,25 +30,8 @@ export const S = {
     display: table-cell;
     width: 100%;
     height: 100%;
-    vertical-align: bottom;
-    padding-bottom: 6.2rem;
+    vertical-align: middle;
     position: relative;
-
-    @media ${device.S} {
-      padding-bottom: 40rem;
-    }
-
-    @media ${device.M}and (max-width: 1024px) {
-      padding-bottom: 25.2rem;
-    }
-    
-    @media ${device.L} {
-      padding-bottom: 25.2rem;
-    }
-
-    @media ${device.XL} {
-      padding-bottom: 6.2rem;
-    }
   `,
   Wrapper: styled.div`
     width: 100%;
@@ -58,38 +41,46 @@ export const S = {
     display: table;
   `,
   Box: styled.div`
-    padding-right: 300px;
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-    width: 94%;
-    @media screen and (max-width: 1200px) {
-      max-width: 650px;
+    @media ${device.XS} {
+      width: 70%;
+      max-width: none;
     }
-    @media screen and (max-width: 1024px) {
-      max-width: 600px;
-      padding: 0;
+    @media ${device.S} {
+      padding-right: 0px;
+      width: 60%;
     }
-    @media screen and (max-width: 768px) {
-      max-width: 500px;
+    @media ${device.M} {
+      padding-right: 0px;
+      width: 60%;
+    }
+    @media ${device.L} {
+      width: 94%;
+      padding-right: 300px;
     }
   `,
   BtnList: styled.div`
     position: absolute;
+    display: block;
     right: 0;
     bottom: 2.1rem;
     text-align: center;
-
-    @media screen and (max-width: 1200px) {
-      position: absolute;
-    }
-    @media screen and (max-width: 1024px) {
+    @media ${device.XS} {
       position: static;
-      padding: 0;
-      display: flex;
-      column-gap: 40px;
     }
-    @media screen and (max-width: 768px) {
+    @media ${device.S} {
+      position: static;
+      margin-top: 40px;
+    }
+    @media ${device.M} {
+      position: static;
+      display: flex;
+      justify-content: space-between;
+    }
+    @media ${device.L} {
+      position: absolute;
       display: block;
     }
   `,
@@ -106,38 +97,29 @@ export const S = {
     border: 0.2rem solid #fff;
     font-family: montserrat-semibold, sans-serif;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: none !important;
     :hover {
       background: white !important;
       color: #000000;
     }
-    @media screen and (max-width: 768px) {
+    @media ${device.XS} {
       width: 100%;
+    }
+    @media ${device.S} {
+      width: 100%;
+    }
+    @media ${device.M} {
+      width: 210px;
     }
   `,
   Title: styled.h1`
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-family: librebaskerville-bold, serif;
     color: #fff;
     line-height: 1.35;
-    @media screen and (max-width: 1024px) {
-      font-size: 2rem;
-    }
-    @media screen and (max-width: 768px) {
-      font-size: 3rem;
+    font-weight: bold;
+    @media ${device.XM} {
+      font-size: 2.2rem;
     }
   `,
 };
-
-/*
-Progress: styled.div`
-    transform: translate3d(90%, 0px, 0px);
-    background: orange;
-    position: fixed;
-    z-index: 900;
-    top: 0;
-    right: 100%;
-    width: 100%;
-    height: 4px;
-  `,
-*/

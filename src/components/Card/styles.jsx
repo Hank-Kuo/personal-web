@@ -1,9 +1,22 @@
 import styled from 'styled-components';
 
+import { device } from '../../core/constants/styles';
+
 export const S = {
   Wrapper: styled.div`
-    max-width: 340px;
+    max-width: 300px;
     width: 50%;
+    @media ${device.M} {
+      max-width: 300px;
+        
+    }
+    @media ${device.L} {
+      max-width: 340px;
+    }
+    @media ${device.XL} {
+      max-width: 300px;
+    }
+
   `,
   Box: styled.article`
     position: relative;
@@ -30,6 +43,10 @@ export const S = {
     max-width: 100%;
     margin: 0px auto;
     border-radius: 4% 4% 0 0;
+  `,
+  CardLink: styled.a`
+    cursor: pointer;
+    text-decoration: none !important;
   `,
   Img: styled.img`
     width: 100%;
@@ -71,6 +88,7 @@ export const S = {
     font-weight: 400;
     line-height: 1.2;
     margin-bottom: 26px;
+    color: lightslategrey;
   `,
   Title: styled.h3`
     color: #373b42;
@@ -86,6 +104,7 @@ export const S = {
   Info: styled.div`
     font-size: 13px;
     line-height: 1.3;
+    color: lightslategrey;
   `,
 };
 

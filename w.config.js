@@ -37,6 +37,10 @@ var loaders = [
     {
       test: /\.(?:png|jpg|gif)$/,
       use: 'file-loader'
+    },
+    {
+      test: /\.md$/,
+      use: [{ loader: 'file-loader'}]
     }
 ];
 
