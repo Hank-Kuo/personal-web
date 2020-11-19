@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { device } from '../../core/constants/styles';
+
 export const S = {
   Wrapper: styled.div`
     display: ${(props) => (props.visible ? 'flex' : 'none')};
@@ -9,6 +11,8 @@ export const S = {
     width: 100%;
     height: 100%;
     z-index: 1000;
+    overflow: scroll;
+    background-color: rgba(0, 0, 0, 0.5);
   `,
   ModalGrey: styled.div`
     position: fixed;
@@ -21,20 +25,24 @@ export const S = {
     background-color: rgba(0, 0, 0, 0.5);
   `,
   Container: styled.div`
-    align-items: center;
-    display: flex;
-    background: #ffffff 0% 0% no-repeat padding-box;
-    margin: ${(props) => props.margin};
-    border-radius: 12px;
+    max-width: 100%;
+    max-height: 100%;
     z-index: 2001;
+    margin: 0 auto;
+    display: table;
     box-sizing: border-box;
-    box-shadow: 0px 3px 6px #00000029;
     -webkit-animation: FadeIn 350ms linear;
     -moz-animation: FadeIn 350ms linear;
     animation: FadeIn 350ms linear;
     -webkit-animation-name: FadeIn;
     -moz-animation-name: FadeIn;
     animation-name: FadeIn;
+
+    @media ${device.XS} {
+      width: 100%;
+      height: 100%;
+      display: flex;
+    }
 
     @-webkit-keyframes FadeIn {
       0% {
@@ -69,4 +77,5 @@ export const S = {
       }
     }
   `,
+  Inner: styled.div``,
 };

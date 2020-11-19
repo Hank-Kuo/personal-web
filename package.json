@@ -24,7 +24,8 @@
     "build_": "react-scripts build",
     "dev": "webpack-dev-server --config ./webpack.config.js --progress --colors",
     "build": "rm -rf ./docs/* && webpack --config ./webpack.production.config.js --progress && ls ./docs",
-    "deploy-dev": "rm -rf ./docs/* && webpack --config ./webpack.production.config.js --progress && ls ./docs && cp docs/index.html docs/200.html && surge docs/ healthy-vest.surge.sh",
+    "deploy-dev": "cp docs/index.html docs/200.html && surge docs/ healthy-vest.surge.sh",
+    "build-deploy-dev": "rm -rf ./docs/* && webpack --config ./webpack.production.config.js --progress && ls ./docs && cp docs/index.html docs/200.html && surge docs/ healthy-vest.surge.sh",
     "deploy": "cp docs/index.html docs/200.html && surge docs/ hank-kuo.surge.sh"
   },
   "browserslist": {

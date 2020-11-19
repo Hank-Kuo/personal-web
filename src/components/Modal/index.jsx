@@ -17,11 +17,13 @@ class Modal extends Component {
 
   render() {
     return (
-      <S.Wrapper visible={this.props.visible} style={this.props.wrapperStyle}>
-        <S.ModalGrey onClick={()=>{this.props.onClose()}} />
-        <S.Container margin={this.props.margin} style={this.props.style}>
-          {this.props.children}
-        </S.Container>
+      <S.Wrapper visible={this.props.visible}>
+        <S.ModalGrey
+          onClick={() => {
+            this.props.onClose();
+          }}
+        />
+        <S.Container>{this.props.children}</S.Container>
       </S.Wrapper>
     );
   }

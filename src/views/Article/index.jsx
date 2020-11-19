@@ -4,10 +4,12 @@ import ReactMarkdown from 'react-markdown';
 import Progress from '../../core/hoc/progress';
 import Comment from '../../components/Comment';
 import Modal from '../../components/Modal';
+import Popup from '../../components/Popup';
 import { S, C, E, F } from './styles';
 import { DATA } from './data';
 
 import { setCookies } from '../../core/utils/cookie';
+// import { getIcon } from '../../core/utils/randomImg';
 
 import IMG from '../../assets/images/face.svg';
 import THUMBIMG from '../../assets/images/emoji/thumb.png';
@@ -63,11 +65,13 @@ const Emoji_DATA = [
     img: COOLIMG,
   },
 ];
+
 class Article extends Component {
   constructor(props) {
     super(props);
     this.state = { terms: null, emoji: -1, visible: false };
   }
+
   componentDidMount() {
     fetch(input)
       .then((response) => response.text())
@@ -75,11 +79,14 @@ class Article extends Component {
         this.setState({ terms: text });
       });
     setCookies(this.props.match.params.id);
+    // const img = getIcon();
+    // this.setState({ icon: img['img'] });
   }
 
   onClickModal = () => {
     this.setState(() => ({ visible: true }));
   };
+
   onClose = () => {
     this.setState(() => ({ visible: false }));
   };
@@ -126,6 +133,20 @@ class Article extends Component {
     );
   };
 
+  renderModal = () => {
+    return (
+      <Modal visible={this.state.visible} onClose={this.onClose}>
+        <F.Wrapper>
+          <F.Img src={CLOSEIMG} alt="" onClick={this.onClose} />
+          <F.Title>Comment</F.Title>
+          <F.NameInput placeholder="Name" />
+          <F.ContentInput placeholder="Comment" />
+          <F.Btn type="submit" onClick={this.onClose}></F.Btn>
+        </F.Wrapper>
+      </Modal>
+    );
+  };
+
   render() {
     console.log(this.props.match.params.id);
     return (
@@ -134,22 +155,13 @@ class Article extends Component {
           <S.Box>
             <ReactMarkdown source={this.state.terms} />
           </S.Box>
-          <S.Img src={IMG} alt="" onClick={this.onClickModal} />
+          <S.MsgBox>
+            <Popup />
+            <S.Img src={IMG} alt="" onClick={this.onClickModal} />
+          </S.MsgBox>
           {this.renderEmoji()}
           {this.renderComments()}
-          <Modal
-            visible={this.state.visible}
-            onClose={this.onClose}
-            margin="50px auto"
-          >
-            <F.Wrapper>
-              <F.Img src={CLOSEIMG} alt="" onClick={this.onClose} />
-              <F.Title>Comment</F.Title>
-              <F.NameInput placeholder="Name"/>
-              <F.ContentInput placeholder="Comment"/>
-              <F.Btn type="submit" onClick={this.onClose}></F.Btn>
-            </F.Wrapper>
-          </Modal>
+          {this.renderModal()}
         </S.Wrapper>
       </>
     );

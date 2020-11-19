@@ -66,13 +66,15 @@ export const S = {
       font-size: 0.8em;
     }
   `,
+  MsgBox: styled.div`
+    position: fixed;
+    right: 40px;
+    bottom: 30px;
+  `,
   Img: styled.img`
     width: 50px;
     background: white;
     border-radius: 50%;
-    position: fixed;
-    right: 40px;
-    bottom: 30px;
     cursor: pointer;
     &:hover {
       background: burlywood;
@@ -157,27 +159,32 @@ export const E = {
 export const F = {
   Wrapper: styled.div`
     position: relative;
-    @media ${device.XS} {
-      width: 270px;
-      height: 550px;
-      padding: 60px 25px;
-    }
-    @media ${device.S} {
-      width: 400px;
-      height: 550px;
-    }
-    @media ${device.M} {
-      width: 500px;
-      height: 550px;
-    }
+    height: 550px;
+    width: 550px;
+    margin: 80px auto;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 12px;
+    box-shadow: 0px 3px 6px #00000029;
     display: flex;
     flex-direction: column;
     padding: 60px 100px;
+    @media ${device.XS} {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
+      padding: 40px 10% 20px;
+      margin: 0;
+    }
+    @media ${device.S} {
+      width: 550px;
+      height: 550px;
+    }
   `,
   Title: styled.h1`
     text-align: center;
     @media ${device.XS} {
-      font-size: 1.3em;
+      font-size: 1.8em;
       text-align: left;
     }
   `,
@@ -196,26 +203,35 @@ export const F = {
     border: 2px solid coral;
     outline: none;
     font-size: 23px;
+    line-height: 1.5;
+    @media ${device.XS} {
+      height: 300px;
+    }
   `,
   Btn: styled.input`
-    margin-top: 25px;
+    margin: 50px 25px 0;
     border-radius: 100px;
     background: darksalmon;
     border-color: darksalmon;
     outline: none;
     cursor: pointer;
+    @media ${device.XS} {
+      margin: 70px 30px 30px;
+    }
     @media ${device.XM} {
-      margin-top: 45px;
+      margin: 35px 30px 0;
+    }
+    &:hover {
+      opacity: 0.8;
     }
   `,
   Img: styled.img`
     position: absolute;
-    width: 50px;
     right: 15px;
     top: 20px;
+    width: 50px;
     cursor: pointer;
     @media ${device.XS} {
-      top: 60px;
       width: 40px;
     }
   `,
