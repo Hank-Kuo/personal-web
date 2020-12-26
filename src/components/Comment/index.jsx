@@ -1,15 +1,16 @@
 import React from 'react';
 
-import IMG from '../../assets/images/icon/3.jpg';
+import { getIcon } from '../../core/utils/getIconImg';
 import { S } from './styles';
 
 export default function (props) {
+  const img = getIcon(props.character)
   return (
     <S.Wrapper>
-      <S.Img src={IMG} alt="" />
+      <S.Img src={img} alt="" />
       <S.Box>
         <S.Head>
-          <S.Img1 src={IMG} alt="" />
+          <S.Img1 src={img} alt="" />
           <S.InnerBox>
             <S.Title>{props.name}</S.Title>
             <S.Time>{props.time}</S.Time>

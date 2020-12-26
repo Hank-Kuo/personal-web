@@ -24,7 +24,6 @@ export const S = {
     font-size: 5rem;
     font-weight: bold;
     color: snow;
-
   `,
   Container: styled.div`
     position: relative;
@@ -57,21 +56,31 @@ export const S = {
   Box: styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+
     > * + * {
       flex: 1 0 61%;
-      margin-top: 20px
+      margin-top: 20px;
     }
 
     div:first-child {
       margin-top: 20px;
       flex: 1 0 61%;
     }
-    @media (max-width: 825px) {
+    @media ${device.XM} {
       justify-content: center;
     }
-    @media ${device.L} {
-      justify-content: space-between;
+    
+    @media ${device.M} {
+      > * + * {
+        flex: 1 0 61%;
+        margin-top: 20px;
+        margin-left: 5%;
+      }
+      > div {
+        margin-top: 20px;
+        flex: 1 0 61%;
+        margin-left: 5%;
+      }
     }
   `,
 };

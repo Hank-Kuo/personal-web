@@ -48,11 +48,6 @@ const ITEM = {
   23: IMG23,
 };
 
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-export const getIcon = () => {
-  const r = getRandom(1, 23);
-  return { id: r, img: ITEM[r] };
+export const getIcon = (id) => {
+  return ITEM[id];
 };

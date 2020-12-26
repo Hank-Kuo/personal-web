@@ -65,6 +65,10 @@ export const S = {
     li {
       font-size: 0.8em;
     }
+
+    .anchor {
+      display: none;
+    }
   `,
   MsgBox: styled.div`
     position: fixed;
@@ -181,6 +185,10 @@ export const F = {
       height: 550px;
     }
   `,
+  Form: styled.form`
+    display: flex;
+    flex-direction: column;
+  `,
   Title: styled.h1`
     text-align: center;
     @media ${device.XS} {
@@ -191,7 +199,7 @@ export const F = {
   NameInput: styled.input`
     border-radius: 10px;
     margin-top: 40px;
-    border: 2px solid coral;
+    border: ${(props) => props.error ? '2px solid red': '2px solid coral'};
     padding: 4px 10px;
     outline: none;
   `,
@@ -200,7 +208,7 @@ export const F = {
     border-radius: 10px;
     margin-top: 30px;
     height: 150px;
-    border: 2px solid coral;
+    border: ${(props) => props.error ? '2px solid red': '2px solid coral'};
     outline: none;
     font-size: 23px;
     line-height: 1.5;
@@ -208,12 +216,12 @@ export const F = {
       height: 300px;
     }
   `,
-  Btn: styled.input`
+  Btn: styled.button`
     margin: 50px 25px 0;
     border-radius: 100px;
     background: darksalmon;
     border-color: darksalmon;
-    outline: none;
+    outline: none !important;
     cursor: pointer;
     @media ${device.XS} {
       margin: 70px 30px 30px;

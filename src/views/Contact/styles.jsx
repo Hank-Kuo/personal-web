@@ -89,6 +89,7 @@ export const S = {
       box-sizing: border-box;
     }
   `,
+  Link: styled.a``,
   Btn: styled.a`
     display: block;
     width: 210px;

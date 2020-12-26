@@ -13,11 +13,21 @@ class Contact extends Component {
           just keep working for what you want to achieve.
         </S.SubTitle>
         <S.IconList>
-          <S.GithubIcon></S.GithubIcon>
-          <S.FacebookIcon></S.FacebookIcon>
-          <S.LinkedinIcon></S.LinkedinIcon>
-          <S.InstagramIcon></S.InstagramIcon>
-          <S.TwitterIcon></S.TwitterIcon>
+          <S.Link href="https://github.com/Hank-Kuo" target="_blank">
+            <S.GithubIcon />
+          </S.Link>
+          <S.Link href="https://www.facebook.com/shigeno.goro.90/" target="_blank">
+            <S.FacebookIcon />
+          </S.Link>
+          <S.Link>
+            <S.LinkedinIcon />
+          </S.Link>
+          <S.Link>
+            <S.InstagramIcon />
+          </S.Link>
+          <S.Link>
+            <S.TwitterIcon />
+          </S.Link>
         </S.IconList>
         <S.Btn href="/about">ABOUT ME</S.Btn>
       </S.Wrapper>

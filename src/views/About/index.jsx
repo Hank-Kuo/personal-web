@@ -118,8 +118,8 @@ class About extends Component {
                   new things.
                 </S.SubTitle>
                 <S.BtnList>
-                  <S.ResumeBtn>RESUME</S.ResumeBtn>
-                  <S.ResumeBtn>履歷</S.ResumeBtn>
+                  <S.ResumeBtn href="https://drive.google.com/file/d/11W6T2CcVACc3fZ3uAw96-G_fdOU1dtlK/view" target="_blank">RESUME</S.ResumeBtn>
+                  <S.ResumeBtn href="https://drive.google.com/file/d/12EJS9kQi860SasraIJNW59a-RU2qbzjd/view" target="_blank">履歷</S.ResumeBtn>
                 </S.BtnList>
               </S.AboutMeBox>
             </S.HeaderBox>

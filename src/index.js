@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './index.css';
 import Routes from './routes';
+import { ToastContainer } from 'react-toastify';
+import { UserProvider } from './context/UserContext';
 import * as serviceWorker from './serviceWorker';
+
+import './index.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <UserProvider>
+      <Routes />
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        closeOnClick
+        rtl={false}
+        pauseOnVisibilityChange
+        draggable 
+      />
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

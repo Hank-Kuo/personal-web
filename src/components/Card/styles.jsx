@@ -7,8 +7,7 @@ export const S = {
     max-width: 300px;
     width: 50%;
     @media ${device.M} {
-      max-width: 300px;
-        
+      max-width: 300px; 
     }
     @media ${device.L} {
       max-width: 340px;
