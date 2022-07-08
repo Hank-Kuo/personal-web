@@ -67,6 +67,7 @@ export const S = {
       flex: 1 0 61%;
     }
     @media ${device.XM} {
+      width: 100%;
       justify-content: center;
     }
     

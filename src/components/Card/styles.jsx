@@ -37,6 +37,7 @@ export const S = {
     position: relative;
     background-color: #2c3340;
     width: 100%;
+    height: 200px;
     overflow: hidden;
     position: relative;
     max-width: 100%;
@@ -49,11 +50,12 @@ export const S = {
   `,
   Img: styled.img`
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     position: relative;
     backface-visibility: hidden;
     transition: transform 1.5s;
+    max-height:200px;
   `,
   Content: styled.div`
     padding: 25px 25px 35px 25px;
@@ -105,6 +107,7 @@ export const S = {
     line-height: 1.3;
     color: lightslategrey;
   `,
+  ImgEmpty : styled.div``,
 };
 
 export const C = {

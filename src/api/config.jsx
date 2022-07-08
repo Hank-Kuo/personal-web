@@ -6,9 +6,9 @@ import Toast from '../components/Toast';
 
 import { getUserCookies } from '../core/utils/cookie';
 
-axios.defaults.timeout = 15000; // 15 second
+axios.defaults.timeout = 5000; // 5 second
 
-axios.defaults.baseURL = 'http://ec2-3-80-230-153.compute-1.amazonaws.com:3000/api/v1'; // 域名
+axios.defaults.baseURL = 'https://hank-kuo.herokuapp.com/api/v1' //'http://ec2-3-236-187-128.compute-1.amazonaws.com:3000/api/v1'; // 域名
 
 axios.interceptors.request.use(
   async (config) => {

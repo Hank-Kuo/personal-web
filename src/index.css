@@ -22,7 +22,7 @@ code {
   height: 5px;
 }
 #nprogress .peg {
-  box-shadow: 0 0 10px orange, 0 0 5px orange;
+  box-shadow: 0 0 10px rgb(235, 199, 133), 0 0 5px orange;
 }
 
 .Toastify__toast--error{

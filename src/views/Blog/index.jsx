@@ -5,6 +5,7 @@ import Card from '../../components/Card';
 import { S } from './styles';
 
 import { blogAPI } from '../../api';
+
 class Blog extends Component {
   constructor(props) {
     super(props);

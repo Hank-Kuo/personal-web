@@ -58,6 +58,14 @@ export default {
         徵進行訓練模型，來提前預測機台是否有炸傷的可能性．且後續以利自動化流程，開發排成系統，會將公司公有的\
         資料庫 migrate 到部門內部的資料庫(postgreSQL)，並進行相關的預測．',
     },
+    {
+      name: 'Home心線上照服媒合平台',
+      position: '前端工程師 (Frontend Engineer)',
+      time: '2021.01 - Now',
+      content:
+        '重構其前端架構、開發新的 UI component、並且優化其專案效能，其中主要透過 React 程式語言進行開發\
+        並針對不同需求進行開發',
+    },
   ],
   skills: [
     {
@@ -205,4 +213,13 @@ export default {
       textColor: '#fcd000',
     },
   ],
+  link: {
+    "resume_en":"https://drive.google.com/file/d/11W6T2CcVACc3fZ3uAw96-G_fdOU1dtlK/view",
+    "resume_zh":"https://drive.google.com/file/d/12EJS9kQi860SasraIJNW59a-RU2qbzjd/view",
+    "linkedin":"https://www.linkedin.com/in/%E9%83%AD-%E9%8E%AE%E6%BA%90-a5888a165/",
+    "github": "https://github.com/Hank-Kuo",
+    "fb":"https://www.facebook.com/shigeno.goro.90/",
+    "instagram":"",
+    "twitter":"",
+  }
 };

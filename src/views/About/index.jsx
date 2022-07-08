@@ -112,14 +112,25 @@ class About extends Component {
                 <S.SubTitle>
                   My name is Zhen Yuan Kuo. Currently studying at National
                   Taiwan University of Science and Technology, Department of
-                  information management master's program the first grade. I see
-                  myself as a Machine Learning Engineer and Web Developer. In my
-                  free time I like working on open source projects and learning
-                  new things.
+                  information management master the second grade. My current
+                  research eld is knowledge graph recommendation system ( Deep
+                  learning NLP domain ). In the rest time, I usually do the some
+                  own projects, I like working on open source projects and
+                  learning new things.
                 </S.SubTitle>
                 <S.BtnList>
-                  <S.ResumeBtn href="https://drive.google.com/file/d/11W6T2CcVACc3fZ3uAw96-G_fdOU1dtlK/view" target="_blank">RESUME</S.ResumeBtn>
-                  <S.ResumeBtn href="https://drive.google.com/file/d/12EJS9kQi860SasraIJNW59a-RU2qbzjd/view" target="_blank">履歷</S.ResumeBtn>
+                  <S.ResumeBtn
+                    href="https://drive.google.com/file/d/11W6T2CcVACc3fZ3uAw96-G_fdOU1dtlK/view"
+                    target="_blank"
+                  >
+                    RESUME
+                  </S.ResumeBtn>
+                  <S.ResumeBtn
+                    href="https://drive.google.com/file/d/12EJS9kQi860SasraIJNW59a-RU2qbzjd/view"
+                    target="_blank"
+                  >
+                    履歷
+                  </S.ResumeBtn>
                 </S.BtnList>
               </S.AboutMeBox>
             </S.HeaderBox>

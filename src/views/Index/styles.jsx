@@ -122,4 +122,14 @@ export const S = {
       font-size: 2.2rem;
     }
   `,
+  SubTitle: styled.h2`
+    font-size: 3.5rem;
+    font-family: librebaskerville-bold, serif;
+    color: #fff;
+    line-height: 1.35;
+    font-weight: bold;
+    @media ${device.XM} {
+      font-size: 2rem;
+    }
+  `,
 };

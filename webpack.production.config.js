@@ -10,6 +10,7 @@ module.exports = {
   output: {
     path:__dirname + '/docs',
     filename: 'app-' + config.version+'.js',
+    publicPath: '/',
   },
   module: {
     rules: config.loaders

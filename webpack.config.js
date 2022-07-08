@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: __dirname + '/server',
     filename: 'app.js',
+    publicPath: '/',
   },
   module: {
     rules: config.loaders

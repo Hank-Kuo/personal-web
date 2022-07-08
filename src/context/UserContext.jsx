@@ -41,8 +41,6 @@ class UserProvider extends Component {
     });
   };
 
-
-
   render() {
     return (
       <UserContext.Provider

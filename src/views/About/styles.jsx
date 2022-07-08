@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+
 import { device } from '../../core/constants/styles';
 
 const skillbarKeyframe = keyframes`
@@ -346,6 +347,7 @@ export const S = {
     }
     @media ${device.M} {
       display: flex;
+      width: 155px;
     }
   `,
   TimeLineMark: styled.div`
@@ -359,8 +361,8 @@ export const S = {
       display: block;
       height: 9px;
       position: relative;
-      top: 3px;
-      left: 0;
+      top: 1px;
+      left: 3px;
       width: 9px;
       transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
     }
@@ -482,7 +484,7 @@ export const T = {
     padding: 0;
   `,
   TimeLineDate: styled.span`
-    width: max-content;
+    width: 150px;
     padding-right: 30px;
     color: #ffffff;
     font-size: 12px;
@@ -499,6 +501,7 @@ export const T = {
     }
     @media ${device.M} {
       display: flex;
+      
     }
   `,
   TimeLineMark: styled.div`
@@ -512,8 +515,9 @@ export const T = {
       display: block;
       height: 9px;
       position: relative;
-      top: 3px;
-      left: 0;
+     
+      top: 9px;
+      left: 2.5px;
       width: 9px;
       transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
     }
@@ -523,10 +527,10 @@ export const T = {
       background: #ccd5db;
       display: block;
       position: relative;
-      top: 3px;
+      top: 10px;
       bottom: 0;
       left: 6px;
-      height: 100%;
+      height:  calc(100% + 1px);
     }
   `,
   TimeLineContent: styled.div`
