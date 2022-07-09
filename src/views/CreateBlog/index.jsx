@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import { Formik } from 'formik';
+import React, { Component } from "react";
+import { Formik } from "formik";
 
-import { S } from './styles';
+import { S } from "./styles";
 
-import { CreateBlogSchema } from '../../core/utils/validateForm';
-import FocusError from '../../core/utils/focusError';
-import { blogAPI } from '../../api';
+import { CreateBlogSchema } from "../../core/utils/validateForm";
+import FocusError from "../../core/utils/focusError";
+import { blogAPI } from "../../api";
+import { withErrorConsumer } from "../../context/ErrorContext";
 
 class CreateBlog extends Component {
   constructor(props) {
@@ -19,16 +20,16 @@ class CreateBlog extends Component {
   }
 
   _onFocus = (event) => {
-    const name = event.target.name + 'Focus';
+    const name = `${event.target.name}Focus`;
     this.setState({
       [name]: true,
     });
   };
 
   _onBlur = (event) => {
-    const value = event.target.value;
+    const { value } = event.target;
     if (!value) {
-      const name = event.target.name + 'Focus';
+      const name = `${event.target.name}Focus`;
       this.setState({
         [name]: false,
       });
@@ -42,20 +43,32 @@ class CreateBlog extends Component {
       img_link: values.imgURL,
       link: values.blogURL,
     };
-    blogAPI.post(data).then(()=>{
-      alert('Create new Blog to your website');
-      resetForm();
-    });
-    
+    blogAPI
+      .post(data)
+      .then(() => {
+        alert("Create new Blog to your website");
+        resetForm();
+      })
+      .catch((e) => {
+        this.props.errorContext.setError(e);
+      });
   };
 
   render() {
+    const {
+      blogNameFocus, tagsFocus, blogURLFocus, imgURLFocus,
+    } = this.state;
     return (
       <S.Wrapper>
         <S.Title>Upload Blog</S.Title>
         <S.SubTitle>Upload your blog to Server</S.SubTitle>
         <Formik
-          initialValues={{ blogName: '', blogURL: '', imgURL: '', tags: '' }}
+          initialValues={{
+            blogName: "",
+            blogURL: "",
+            imgURL: "",
+            tags: "",
+          }}
           validateOnChange={false}
           validateOnBlur={false}
           validationSchema={CreateBlogSchema}
@@ -64,11 +77,7 @@ class CreateBlog extends Component {
           {(formikProps) => (
             <S.Form onSubmit={formikProps.handleSubmit}>
               <S.Item>
-                <S.FormLabel
-                  htmlFor="blogName"
-                  type="text"
-                  active={this.state.blogNameFocus}
-                >
+                <S.FormLabel htmlFor="blogName" type="text" active={blogNameFocus}>
                   Blog name
                 </S.FormLabel>
                 <S.Input
@@ -87,7 +96,7 @@ class CreateBlog extends Component {
                 <S.ErrorText>{formikProps.errors.blogName}</S.ErrorText>
               ) : null}
               <S.Item>
-                <S.FormLabel htmlFor="tags" active={this.state.tagsFocus}>
+                <S.FormLabel htmlFor="tags" active={tagsFocus}>
                   Tags
                 </S.FormLabel>
                 <S.Input
@@ -105,7 +114,7 @@ class CreateBlog extends Component {
                 <S.ErrorText>{formikProps.errors.tags}</S.ErrorText>
               ) : null}
               <S.Item>
-                <S.FormLabel htmlFor="blogURL" active={this.state.blogURLFocus}>
+                <S.FormLabel htmlFor="blogURL" active={blogURLFocus}>
                   Blog url
                 </S.FormLabel>
                 <S.Input
@@ -123,7 +132,7 @@ class CreateBlog extends Component {
                 <S.ErrorText>{formikProps.errors.blogURL}</S.ErrorText>
               ) : null}
               <S.Item>
-                <S.FormLabel htmlFor="imgURL" active={this.state.imgURLFocus}>
+                <S.FormLabel htmlFor="imgURL" active={imgURLFocus}>
                   IMG url
                 </S.FormLabel>
                 <S.Input
@@ -150,4 +159,4 @@ class CreateBlog extends Component {
   }
 }
 
-export default CreateBlog;
+export default withErrorConsumer(CreateBlog);

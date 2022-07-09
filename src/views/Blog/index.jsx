@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Progress from '../../core/hoc/progress';
-import Card from '../../components/Card';
-import { S } from './styles';
+import progress from "../../core/hoc/progress";
+import Card from "../../components/Card";
+import { S } from "./styles";
 
-import { blogAPI } from '../../api';
+import { blogAPI } from "../../api";
+import { withErrorConsumer } from "../../context/ErrorContext";
 
 class Blog extends Component {
   constructor(props) {
@@ -13,31 +14,37 @@ class Blog extends Component {
       data: [],
     };
   }
+
   componentDidMount() {
-    blogAPI.fetch().then((values) => {
-      this.setState(() => ({ data: values.data }));
-    });
+    blogAPI
+      .fetch()
+      .then((values) => {
+        this.setState(() => ({ data: values.data }));
+      })
+      .catch((e) => {
+        this.props.errorContext.setError(e);
+      });
   }
+
   render() {
+    const { data } = this.state;
     return (
       <S.Wrapper>
         <S.Title>BLOG</S.Title>
         <S.Container>
           <S.ContainerBox>
             <S.Box>
-              {this.state.data.map((values) => {
-                return (
-                  <Card
-                    key={values.id}
-                    id={values.id}
-                    title={values.title}
-                    createTime={values.create_time}
-                    tags={values.tag}
-                    img={values.img_link}
-                    view={values.visitor}
-                  />
-                );
-              })}
+              {data.map((values) => (
+                <Card
+                  key={values.id}
+                  id={values.id}
+                  title={values.title}
+                  createTime={values.create_time}
+                  tags={values.tag}
+                  img={values.img_link}
+                  view={values.visitor}
+                />
+              ))}
             </S.Box>
           </S.ContainerBox>
         </S.Container>
@@ -46,4 +53,4 @@ class Blog extends Component {
   }
 }
 
-export default Progress(Blog);
+export default progress(withErrorConsumer(Blog));

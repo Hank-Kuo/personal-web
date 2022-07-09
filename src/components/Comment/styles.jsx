@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { device } from '../../core/constants/styles';
+import { device } from "../../core/constants/styles";
 
 export const S = {
   Wrapper: styled.div`
@@ -44,6 +44,7 @@ export const S = {
   Box: styled.div`
     margin-left: 50px;
     max-width: 850px;
+    min-width: 260px;
     overflow-wrap: break-word;
     line-height: 25px;
     @media ${device.XS} {

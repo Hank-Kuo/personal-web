@@ -1,23 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Progress from '../../core/hoc/progress';
-import { S } from './styles';
+import progress from "../../core/hoc/progress";
+import { S } from "./styles";
 
-import IMG from '../../assets/images/home3.jpg';
-import IMG_COMPRESS from '../../assets/images/home3_compress.jpg';
+import IMG from "../../assets/images/home.jpg";
+import IMG_COMPRESS from "../../assets/images/home_compress.jpg";
 
 class Index extends Component {
-  state = { img: IMG_COMPRESS };
-  componentDidMount(){
-    setTimeout(()=>{
-      this.setState(()=>({img: IMG}))
-    }, 1500)
+  constructor(props) {
+    super(props);
+    this.state = { img: IMG_COMPRESS };
   }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState(() => ({ img: IMG }));
+    }, 1500);
+  }
+
   render() {
+    const { img } = this.state;
     return (
       <>
         <S.BackgroundBox>
-          <S.BackgroundIMG src={this.state.img} alt="" />
+          <S.BackgroundIMG src={img} alt="" />
         </S.BackgroundBox>
         <S.Overlay />
         <S.Wrapper>
@@ -40,4 +46,4 @@ class Index extends Component {
   }
 }
 
-export default Progress(Index);
+export default progress(Index);

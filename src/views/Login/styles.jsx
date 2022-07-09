@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const S = {
   Wrapper: styled.div`
@@ -27,7 +27,7 @@ export const S = {
   Input: styled.input`
     padding: 0.4em 1em 0.5em;
     background-color: #f3fafd;
-    border: ${(props)=> props.error ? 'solid 2px red': 'solid 2px #217093'};
+    border: ${(props) => (props.error ? "solid 2px red" : "solid 2px #217093")};
     border-radius: 4px;
     -webkit-appearance: none;
     box-sizing: border-box;
@@ -67,8 +67,8 @@ export const S = {
     left: 10px;
     background-color: #f3fafd;
     &:after {
-      display: ${(props) => (props.active ? 'block' : 'none')};
-      content: '';
+      display: ${(props) => (props.active ? "block" : "none")};
+      content: "";
       position: absolute;
       left: 7px;
       top: 0px;
@@ -117,7 +117,7 @@ export const I = {
     border-radius: 50%;
     pointer-events: none;
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;

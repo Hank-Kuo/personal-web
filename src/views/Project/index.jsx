@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { S } from './styles';
+import { S } from "./styles";
 
 class Project extends Component {
   render() {

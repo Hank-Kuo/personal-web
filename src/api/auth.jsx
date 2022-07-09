@@ -1,16 +1,16 @@
-import { fetch, post } from './config';
+import { fetch, post } from "./config";
 
 export const authAPI = {
-  fetch: function (paramObj) {
-    return fetch('/auth/login', paramObj);
+  fetch(paramObj) {
+    return fetch("/auth/login", paramObj);
   },
-  post: function (data) {
-    return post('/auth/login', data);
+  post(data) {
+    return post("/auth/login", data);
   },
 };
 
 export const loginAPI = {
-  post: function (data) {
-    return post('/login', data);
+  post(data) {
+    return post("/login", data);
   },
 };

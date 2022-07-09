@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import { S } from './styles';
+import { S } from "./styles";
 
 export default function () {
   return (
@@ -9,4 +9,3 @@ export default function () {
     </S.Wrapper>
   );
 }
-

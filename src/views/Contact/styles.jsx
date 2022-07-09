@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import { device } from '../../core/constants/styles';
+import { device } from "../../core/constants/styles";
 
 const Icon = css`
   padding-left: 5px;

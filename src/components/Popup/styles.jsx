@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const S = {
   Wrapper: styled.div`
-    display: ${(props) => (props.visible ? 'block' : 'none')};
+    display: ${(props) => (props.visible ? "block" : "none")};
     width: 250px;
     font-size: 0.56em;
     padding: 0.5em 0.2em;
@@ -27,7 +27,7 @@ export const S = {
     }
   `,
   Img: styled.img`
-    margin-left: ${(props) => (props.right ? '10px' : '0')};
-    margin-right: ${(props) => (props.left ? '5px' : '0')};
+    margin-left: ${(props) => (props.right ? "10px" : "0")};
+    margin-right: ${(props) => (props.left ? "5px" : "0")};
   `,
 };

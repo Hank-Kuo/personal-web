@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import { C, Cube } from './styles';
+import { C, Cube } from "./styles";
 
 export default function (props) {
   return (
-    <C.link>
-      <C.span></C.span>
-      <C.span></C.span>
-      <C.span></C.span>
-      <C.span></C.span>
+    <C.Link>
+      <C.Span />
+      <C.Span />
+      <C.Span />
+      <C.Span />
       <Cube
         color1={props.color1}
         color2={props.color2}
@@ -20,18 +20,18 @@ export default function (props) {
         textColor={props.textColor}
       >
         {/* top */}
-        <C.div></C.div>
+        <C.Div />
         {/* bottom */}
-        <C.div></C.div>
+        <C.Div />
         {/* left */}
-        <C.div></C.div>
+        <C.Div />
         {/* right */}
-        <C.div></C.div>
+        <C.Div />
         {/* front */}
-        <C.div>{props.abbre}</C.div>
+        <C.Div>{props.abbre}</C.Div>
         {/* back */}
-        <C.div>{props.text}</C.div>
+        <C.Div>{props.text}</C.Div>
       </Cube>
-    </C.link>
+    </C.Link>
   );
 }

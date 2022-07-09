@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { device } from '../../core/constants/styles';
+import { device } from "../../core/constants/styles";
 
 export const S = {
   Wrapper: styled.header`
@@ -101,8 +101,8 @@ export const S = {
     height: 2px;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    transform: ${(props) => (props.show ? 'rotate(720deg)' : 'none')};
-    background: ${(props) => (props.show ? 'transparent' : 'white')};
+    transform: ${(props) => (props.show ? "rotate(720deg)" : "none")};
+    background: ${(props) => (props.show ? "transparent" : "white")};
 
     &:before {
       content: '';
@@ -113,20 +113,18 @@ export const S = {
       background: white;
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
-      transform: ${(props) =>
-        props.show ? 'rotate(45deg) translate(5px, 8px)' : 'none'};
+      transform: ${(props) => (props.show ? "rotate(45deg) translate(5px, 8px)" : "none")};
     }
     &:after {
       content: '';
       position: absolute;
       top: 0.5rem;
-      width: ${(props) => (props.show ? '2rem' : '1.2rem')};
+      width: ${(props) => (props.show ? "2rem" : "1.2rem")};
       height: 2px;
       background: white;
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
-      transform: ${(props) =>
-        props.show ? 'rotate(-45deg) translate(3px, -6px)' : 'none'};
+      transform: ${(props) => (props.show ? "rotate(-45deg) translate(3px, -6px)" : "none")};
     }
   `,
   MenuBox: styled.div`
@@ -137,7 +135,7 @@ export const S = {
     transition: transform 0.26s ease;
     transform: scaleY(0);
     transform-origin: top;
-    transform: ${(props) => (props.show ? 'scaleY(1)' : 'scaleY(0)')};
+    transform: ${(props) => (props.show ? "scaleY(1)" : "scaleY(0)")};
   `,
   MenuContainer: styled.ul`
     transition: all 0.3s ease-in-out;

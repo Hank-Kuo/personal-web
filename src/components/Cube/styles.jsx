@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Cube = styled.div`
   -webkit-transform-origin: 48px 48px -48px;
@@ -24,7 +24,7 @@ export const Cube = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    color: ${(props)=> props.abbreColor};
+    color: ${(props) => props.abbreColor};
   }
 
   & div:nth-child(1) {
@@ -64,30 +64,31 @@ export const Cube = styled.div`
     transform: rotateY(180deg) translateZ(96px);
   }
   & div:nth-child(1) {
-    background: ${(props)=> props.colo1};
+    background: ${(props) => props.colo1};
   }
   & div:nth-child(2) {
-    background: ${(props)=> props.color2};
+    background: ${(props) => props.color2};
   }
   & div:nth-child(3) {
-    background: ${(props)=> props.color3};
+    background: ${(props) => props.color3};
   }
   & div:nth-child(4) {
-    background: ${(props)=> props.color4};
+    background: ${(props) => props.color4};
   }
   & div:nth-child(5) {
-    background: ${(props)=> props.color5};
-    font: 700 34px/1.3 'Poppins', sans-serif;
+    background: ${(props) => props.color5};
+    font: 700 34px/1.3 "Poppins", sans-serif;
   }
   & div:nth-child(6) {
-    background: ${(props)=> props.color6};
-    color: ${(props)=> props.textColor};
-    font: 700 1rem 'Poppins', sans-serif;
-    text-align: center;  
+    background: ${(props) => props.color6};
+    color: ${(props) => props.textColor};
+    font: 700 1rem "Poppins", sans-serif;
+    text-align: center;
   }
 `;
+
 export const C = {
-  link: styled.div`
+  Link: styled.div`
     position: relative;
     width: 96px;
     height: 96px;
@@ -115,8 +116,7 @@ export const C = {
       clip-path: polygon(50% 100%, 0 0, 100% 0);
     }
 
-    & span:nth-child(1):hover ~ ${Cube},
-    & span:nth-child(1):focus ~ ${Cube}{
+    & span:nth-child(1):hover ~ ${Cube}, & span:nth-child(1):focus ~ ${Cube} {
       -webkit-transform: rotateX(-0.5turn);
       transform: rotateX(-0.5turn);
     }
@@ -133,8 +133,7 @@ export const C = {
       clip-path: polygon(100% 100%, 0 50%, 100% 0);
     }
 
-    & span:nth-child(2):hover ~ ${Cube},
-    & span:nth-child(2):focus ~ ${Cube} {
+    & span:nth-child(2):hover ~ ${Cube}, & span:nth-child(2):focus ~ ${Cube} {
       -webkit-transform: rotateY(-0.5turn);
       transform: rotateY(-0.5turn);
     }
@@ -146,8 +145,7 @@ export const C = {
       clip-path: polygon(0 100%, 50% 0, 100% 100%);
     }
 
-    & span:nth-child(3):hover ~ ${Cube},
-    & span:nth-child(3):focus ~ ${Cube} {
+    & span:nth-child(3):hover ~ ${Cube}, & span:nth-child(3):focus ~ ${Cube} {
       -webkit-transform: rotateX(0.5turn);
       transform: rotateX(0.5turn);
     }
@@ -164,8 +162,7 @@ export const C = {
       clip-path: polygon(0 100%, 0 0, 100% 50%);
     }
 
-    & span:nth-child(4):hover ~ ${Cube},
-    & span:nth-child(4):focus ~ ${Cube} {
+    & span:nth-child(4):hover ~ ${Cube}, & span:nth-child(4):focus ~ ${Cube} {
       -webkit-transform: rotateY(0.5turn);
       transform: rotateY(0.5turn);
     }
@@ -188,7 +185,7 @@ export const C = {
       transition: all 100ms ease 500ms;
     }
   `,
-  span: styled.span``,
+  Span: styled.span``,
 
-  div: styled.div``,
+  Div: styled.div``,
 };

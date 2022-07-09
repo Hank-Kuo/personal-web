@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { device } from '../../core/constants/styles';
+import { device } from "../../core/constants/styles";
 
 export const S = {
   Wrapper: styled.div`
@@ -33,9 +33,9 @@ export const S = {
   `,
   FormLabel: styled.label`
     position: absolute;
-    top: ${(props) => (props.active ? '-25px' : '0')};
-    font-size: ${(props) => (props.active ? '20px' : '30px')};
-    padding: ${(props) => (props.active ? '0 15px' : '0 10px')};
+    top: ${(props) => (props.active ? "-25px" : "0")};
+    font-size: ${(props) => (props.active ? "20px" : "30px")};
+    padding: ${(props) => (props.active ? "0 15px" : "0 10px")};
     margin: 10px;
     background-color: #0a0809;
     -webkit-transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
@@ -45,7 +45,7 @@ export const S = {
     width: 100%;
     padding: 20px;
     border: 1px solid white;
-    border-color: ${(props) => (props.error ? 'darkred' : 'white')};
+    border-color: ${(props) => (props.error ? "darkred" : "white")};
     font-size: 20px;
     background-color: #0a0809;
     color: white;

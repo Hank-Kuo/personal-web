@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { device } from '../../core/constants/styles';
+import { device } from "../../core/constants/styles";
 
 export const S = {
   Overlay: styled.div`

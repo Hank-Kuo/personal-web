@@ -1,10 +1,10 @@
-import { get, put } from './config';
+import { get, put } from "./config";
 
 export const emojiAPI = {
-  get: function (id) {
-    return get('/emoji', id);
+  get(id) {
+    return get("/emoji", id);
   },
-  put: function (id, data) {
-    return put('/emoji/'+id, data);
+  put(id, data) {
+    return put(`/emoji/${id}`, data);
   },
 };

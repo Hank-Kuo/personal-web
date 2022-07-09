@@ -1,29 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Routes from './routes';
-import { ToastContainer } from 'react-toastify';
-import { UserProvider } from './context/UserContext';
-import * as serviceWorker from './serviceWorker';
+import Routes from "./routes";
+import { UserProvider } from "./context/UserContext";
+import { ErrorProvider } from "./context/ErrorContext";
+import * as serviceWorker from "./serviceWorker";
 
-import './index.css';
-import 'react-toastify/dist/ReactToastify.css';
+import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserProvider>
-      <Routes />
-      <ToastContainer 
-        position="top-right"
-        autoClose={5000}
-        closeOnClick
-        rtl={false}
-        pauseOnVisibilityChange
-        draggable 
-      />
-    </UserProvider>
+    <ErrorProvider>
+      <UserProvider>
+        <Routes />
+      </UserProvider>
+    </ErrorProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

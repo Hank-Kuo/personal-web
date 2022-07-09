@@ -1,6 +1,6 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
-import { device } from '../../core/constants/styles';
+import { device } from "../../core/constants/styles";
 
 const skillbarKeyframe = keyframes`
     0% {
@@ -59,7 +59,7 @@ export const S = {
   Title: styled.h1`
     color: white;
     text-align: left;
-    font-family: 'Fredoka One', cursive;
+    font-family: "Fredoka One", cursive;
     @media ${device.XM} {
       text-align: center;
     }
@@ -68,7 +68,7 @@ export const S = {
     }
   `,
   SubTitle: styled.p`
-    font-family: 'Dancing Script', cursive;
+    font-family: "Dancing Script", cursive;
     color: white;
     @media ${device.XM} {
       font-size: 1.5rem;
@@ -87,7 +87,6 @@ export const S = {
   SelfieImg: styled.img`
     border-radius: 50% !important;
     border-color: #6c757d !important;
-    border: 1px solid #dee2e6 !important;
   `,
   AboutMeBox: styled.div`
     @media ${device.XM} {
@@ -187,7 +186,7 @@ export const S = {
   `,
   ProfileTitle: styled.h1``,
   ProfileSubTitle: styled.p`
-    font-family: 'Fredoka One', cursive;
+    font-family: "Fredoka One", cursive;
     font-size: 20px;
     font-weight: bold;
     margin: 0;
@@ -209,7 +208,7 @@ export const S = {
     }
   `,
   Progressball: styled.span`
-    background: ${(props) => (props.active ? '#faa54c' : 'none')};
+    background: ${(props) => (props.active ? "#faa54c" : "none")};
     border-color: #cc7214;
     width: 0.6em;
     height: 0.7em;
@@ -270,7 +269,6 @@ export const S = {
   EducationImg: styled.img`
     border-radius: 50% !important;
     border-color: #6c757d !important;
-    border: 1px solid #dee2e6 !important;
     width: 150px;
     height: 150px;
   `,
@@ -298,7 +296,7 @@ export const S = {
     padding: 1rem;
   `,
   EducationTitle: styled.p`
-    font-family: 'Fredoka One', cursive;
+    font-family: "Fredoka One", cursive;
     font-weight: Bold;
     margin: 0;
     @media ${device.XM} {
@@ -314,7 +312,7 @@ export const S = {
     font-size: 1.1rem;
   `,
   TimeLineBox: styled.ul`
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     line-height: 1.4em;
     list-style: none;
     margin: 0;
@@ -338,7 +336,7 @@ export const S = {
     letter-spacing: 2px;
     margin: 0 0 3px 0;
     text-transform: uppercase;
-    color: ${(props) => (props.hover ? '#6fb5c3' : '')};
+    color: ${(props) => (props.hover ? "#6fb5c3" : "")};
   `,
   TimeLineHeader: styled.div`
     display: flex;
@@ -353,11 +351,10 @@ export const S = {
   TimeLineMark: styled.div`
     position: relative;
     &:before {
-      background: ${(props) => (props.hover ? 'transparent' : '#317f8f')};
-      border: ${(props) =>
-        props.hover ? '3px solid #317f8f' : '3px solid transparent'};
+      background: ${(props) => (props.hover ? "transparent" : "#317f8f")};
+      border: ${(props) => (props.hover ? "3px solid #317f8f" : "3px solid transparent")};
       border-radius: 100%;
-      content: '';
+      content: "";
       display: block;
       height: 9px;
       position: relative;
@@ -367,7 +364,7 @@ export const S = {
       transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
     }
     &:after {
-      content: '';
+      content: "";
       width: 3px;
       background: #ccd5db;
       display: block;
@@ -391,10 +388,10 @@ export const S = {
     }
   `,
   TimeLineTitle: styled.p`
-    font-family: 'Fredoka One', cursive;
+    font-family: "Fredoka One", cursive;
     margin: 0;
     font-weight: bold;
-    color: ${(props) => (props.hover ? '#6fb5c3' : '')};
+    color: ${(props) => (props.hover ? "#6fb5c3" : "")};
     @media ${device.XS} {
       font-size: 1.3rem;
     }
@@ -441,7 +438,7 @@ export const C = {
     animation: ${skillbarKeyframe} 2s linear forwards;
 
     &:before {
-      content: '11 %';
+      content: "11 %";
       position: absolute;
       padding: 4px 6px;
       background-color: white;
@@ -453,7 +450,7 @@ export const C = {
       transform: translateX(50%);
     }
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       width: 10px;
       height: 10px;
@@ -468,7 +465,7 @@ export const C = {
 
 export const T = {
   TimeLineBox: styled.ul`
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     line-height: 1.4em;
     list-style: none;
     margin: 0;
@@ -484,7 +481,7 @@ export const T = {
     padding: 0;
   `,
   TimeLineDate: styled.span`
-    width: 150px;
+    width: 155px;
     padding-right: 30px;
     color: #ffffff;
     font-size: 12px;
@@ -492,7 +489,7 @@ export const T = {
     letter-spacing: 2px;
     margin: 0 0 3px 0;
     text-transform: uppercase;
-    color: ${(props) => (props.hover ? '#6fb5c3' : '')};
+    color: ${(props) => (props.hover ? "#6fb5c3" : "")};
   `,
   TimeLineHeader: styled.div`
     display: flex;
@@ -501,28 +498,26 @@ export const T = {
     }
     @media ${device.M} {
       display: flex;
-      
     }
   `,
   TimeLineMark: styled.div`
     position: relative;
     &:before {
-      background: ${(props) => (props.hover ? 'transparent' : '#317f8f')};
-      border: ${(props) =>
-        props.hover ? '3px solid #317f8f' : '3px solid transparent'};
+      background: ${(props) => (props.hover ? "transparent" : "#317f8f")};
+      border: ${(props) => (props.hover ? "3px solid #317f8f" : "3px solid transparent")};
       border-radius: 100%;
-      content: '';
+      content: "";
       display: block;
       height: 9px;
       position: relative;
-     
+
       top: 9px;
       left: 2.5px;
       width: 9px;
       transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
     }
     &:after {
-      content: '';
+      content: "";
       width: 3px;
       background: #ccd5db;
       display: block;
@@ -530,7 +525,7 @@ export const T = {
       top: 10px;
       bottom: 0;
       left: 6px;
-      height:  calc(100% + 1px);
+      height: calc(100% + 1px);
     }
   `,
   TimeLineContent: styled.div`
@@ -546,10 +541,10 @@ export const T = {
     }
   `,
   TimeLineTitle: styled.p`
-    font-family: 'Fredoka One', cursive;
+    font-family: "Fredoka One", cursive;
     margin: 0;
     font-weight: bold;
-    color: ${(props) => (props.hover ? '#6fb5c3' : '')};
+    color: ${(props) => (props.hover ? "#6fb5c3" : "")};
     @media ${device.XS} {
       font-size: 1.3rem;
     }

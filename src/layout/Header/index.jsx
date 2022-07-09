@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import { initGA, logPageView } from '../../core/utils/analytics';
-import { S } from './styles';
+import { initGA, logPageView } from "../../core/utils/analytics";
+import { S } from "./styles";
 
 const Header = () => {
   const [isClick, setIsClick] = React.useState(false);
@@ -39,7 +39,7 @@ const Header = () => {
           setIsClick(!isClick);
         }}
       >
-        <S.MenuIcon show={isClick}></S.MenuIcon>
+        <S.MenuIcon show={isClick} />
       </S.MenuToggle>
       <S.MenuBox show={isClick}>
         <S.MenuContainer show={isClick}>

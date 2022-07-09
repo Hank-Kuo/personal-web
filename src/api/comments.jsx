@@ -1,10 +1,10 @@
-import { get, post } from './config';
+import { get, post } from "./config";
 
 export const commentsAPI = {
-  get: function (id) {
-    return get('/comments', id);
+  get(id) {
+    return get("/comments", id);
   },
-  post: function (data) {
-    return post('/comments/', data);
+  post(data) {
+    return post("/comments/", data);
   },
 };

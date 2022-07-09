@@ -1,40 +1,35 @@
-var config = require('./w.config');
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
-var path = require('path')
+const config = require("./w.config");
 
-// production环境配置
 module.exports = {
   devtool: config.devtool,
   entry: config.entry,
   output: {
-    path:__dirname + '/docs',
-    filename: 'app-' + config.version+'.js',
-    publicPath: '/',
+    path: `${__dirname}/build`,
+    filename: `app-${config.version}.js`,
+    publicPath: "/",
   },
   module: {
-    rules: config.loaders
+    rules: config.loaders,
   },
   plugins: config.productionPlugins,
-  
+
   optimization: {
     minimizer: [
-      // we specify a custom UglifyJsPlugin here to get source maps in production
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
         uglifyOptions: {
           compress: false,
           ecma: 6,
-          mangle: true
+          mangle: true,
         },
-        sourceMap: true
-      })
-    ]
+        sourceMap: true,
+      }),
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
-  }
+    extensions: [".js", ".jsx"],
+  },
 };
-
-//postcss: config.postcss,

@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import PropTypes from 'prop-types';
 
-import { S } from './styles';
+import { S } from "./styles";
 
 class Modal extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.visible !== this.props.visible) {
-      const body = document.getElementsByTagName('body')[0];
+      const body = document.getElementsByTagName("body")[0];
       if (this.props.visible) {
-        body.setAttribute('style', 'overflow: hidden;');
+        body.setAttribute("style", "overflow: hidden;");
       } else {
-        body.setAttribute('style', 'overflow: auto;');
+        body.setAttribute("style", "overflow: auto;");
       }
     }
   }

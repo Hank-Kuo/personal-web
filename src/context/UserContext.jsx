@@ -1,20 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { getUserCookies, setUserCookies } from '../core/utils/cookie';
+import { getUserCookies, setUserCookies } from "../core/utils/cookie";
 
 const UserContext = React.createContext();
+const UserConsumer = UserContext.Consumer;
 
 class UserProvider extends Component {
-  state = {
-    isLoading: false,
-    isAuthed: false,
-    user: {
-      first_name: '',
-      last_name: '',
-      account: '',
-      role: '',
-    },
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false,
+      isAuthed: false,
+      user: {
+        first_name: "",
+        last_name: "",
+        account: "",
+        role: "",
+      },
+    };
+  }
+
   componentDidMount = async () => {
     const data = await getUserCookies();
     if (data) {
@@ -27,18 +32,16 @@ class UserProvider extends Component {
       isLoading: true,
     }));
     setUserCookies(data);
-    this.setState(() => {
-      return {
-        isLoading: false,
-        isAuthed: true,
-        user: {
-          account: data.account,
-          first_name: data.first_name,
-          last_name: data.last_name,
-          role: data.role,
-        },
-      };
-    });
+    this.setState(() => ({
+      isLoading: false,
+      isAuthed: true,
+      user: {
+        account: data.account,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        role: data.role,
+      },
+    }));
   };
 
   render() {
@@ -55,18 +58,13 @@ class UserProvider extends Component {
   }
 }
 
-const UserConsumer = UserContext.Consumer;
-
-export const withUserConsumer = (WrappedComponent) => {
-  return class extends Component {
-    render() {
-      return (
-        <UserConsumer>
-          {(value) => <WrappedComponent {...this.props} context={value} />}
-        </UserConsumer>
-      );
-    }
-  };
+const withUserConsumer = (WrappedComponent) => {
+  const innerComponent = (props) => (
+    <UserConsumer>{(value) => <WrappedComponent {...props} userContext={value} />}</UserConsumer>
+  );
+  return innerComponent;
 };
 
-export { UserProvider, UserConsumer, UserContext };
+export {
+  UserProvider, UserConsumer, UserContext, withUserConsumer,
+};

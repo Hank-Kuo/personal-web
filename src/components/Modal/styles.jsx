@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { device } from '../../core/constants/styles';
+import { device } from "../../core/constants/styles";
 
 export const S = {
   Wrapper: styled.div`
-    display: ${(props) => (props.visible ? 'flex' : 'none')};
+    display: ${(props) => (props.visible ? "flex" : "none")};
     position: fixed;
     top: 0;
     left: 0;
@@ -28,7 +28,7 @@ export const S = {
     max-width: 100%;
     max-height: 100%;
     z-index: 2001;
-    margin: 0 auto;
+    margin: auto;
     display: table;
     box-sizing: border-box;
     -webkit-animation: FadeIn 350ms linear;

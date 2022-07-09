@@ -1,21 +1,22 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // components
-import Header from '../layout/Header';
-const Index = React.lazy(() => import('../views/Index'));
-const Blog = React.lazy(() => import('../views/Blog'));
-const About = React.lazy(() => import('../views/About'));
-const Contact = React.lazy(() => import('../views/Contact'));
-const Project = React.lazy(() => import('../views/Project'));
-const NotFound = React.lazy(() => import('../views/NotFound'));
-const Article = React.lazy(() => import('../views/Article'));
-const CreateBlog = React.lazy(() => import('../views/CreateBlog'));
-const Login = React.lazy(() => import('../views/Login'));
-import Loading from '../components/Loading';
+import Header from "../layout/Header";
+import Loading from "../components/Loading";
 
 // func
-import { PublicRoute, PrivateRoute } from './routeGuard';
+import { PublicRoute, PrivateRoute } from "./routeGuard";
+
+const Index = React.lazy(() => import("../views/Index"));
+const Blog = React.lazy(() => import("../views/Blog"));
+const About = React.lazy(() => import("../views/About"));
+const Contact = React.lazy(() => import("../views/Contact"));
+const Project = React.lazy(() => import("../views/Project"));
+const NotFound = React.lazy(() => import("../views/NotFound"));
+const Article = React.lazy(() => import("../views/Article"));
+const CreateBlog = React.lazy(() => import("../views/CreateBlog"));
+const Login = React.lazy(() => import("../views/Login"));
 
 export default function () {
   return (

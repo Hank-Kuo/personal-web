@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Route, Redirect } from "react-router-dom";
 
-import { UserContext } from '../context/UserContext';
-import NotFound from '../views/NotFound';
+import { UserContext } from "../context/UserContext";
+import NotFound from "../views/NotFound";
 
 export const PublicRoute = ({ component: Component, path, ...rest }) => {
   const { isAuthed } = React.useContext(UserContext);
@@ -16,9 +16,10 @@ export const PublicRoute = ({ component: Component, path, ...rest }) => {
 
 export const PrivateRoute = ({ component: Component, path, ...rest }) => {
   const { isAuthed, isLoading } = React.useContext(UserContext);
-  return isLoading === true ? (
-    <div>Loading</div>
-  ) : isAuthed ? (
+  if (isLoading === true) {
+    return <div>Loading</div>;
+  }
+  return isAuthed ? (
     <Route {...rest} path={path} render={(props) => <Component {...props} />} />
   ) : (
     <Route component={NotFound} status={404} />
@@ -26,6 +27,6 @@ export const PrivateRoute = ({ component: Component, path, ...rest }) => {
 };
 
 PrivateRoute.propTypes = {
-  component: PropTypes.any.isRequired,
+  component: PropTypes.node.isRequired,
   path: PropTypes.string.isRequired,
 };

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { device } from '../../core/constants/styles';
+import { device } from "../../core/constants/styles";
 
 export const S = {
   Wrapper: styled.div`
@@ -23,7 +23,9 @@ export const S = {
     }
   `,
   Box: styled.div`
+    min-height: 1500px;
     color: white;
+
     h1 {
       font-size: 1.7em;
       padding-bottom: 30px;
@@ -31,16 +33,22 @@ export const S = {
       font-size: 2rem;
       margin: 1em 0;
       @media ${device.XS} {
-        font-size: 1.4em;
+        font-size: 1.2em;
       }
       @media ${device.M} {
-        font-size: 1.6em;
+        font-size: 1.2em;
       }
       @media ${device.L} {
         font-size: 1.7em;
       }
     }
     h2 {
+      @media ${device.XS} {
+        font-size: 1em;
+      }
+      @media ${device.S} {
+        font-size: 1em;
+      }
       font-size: 1.2em;
       font-weight: bold;
       margin: 1em 0;
@@ -48,12 +56,16 @@ export const S = {
     h3 {
       font-weight: bold;
     }
-    p {
+    p,
+    li,
+    table,
+    th,
+    td {
       @media ${device.XS} {
-        font-size: 0.9em;
+        font-size: 0.65em;
       }
       @media ${device.S} {
-        font-size: 0.9em;
+        font-size: 0.7em;
       }
       @media ${device.M} {
         font-size: 0.9em;
@@ -62,8 +74,30 @@ export const S = {
         font-size: 0.85em;
       }
     }
-    li {
+
+    table {
       font-size: 0.8em;
+      margin: auto;
+    }
+    table,
+    th,
+    td {
+      border: 1px solid;
+      padding: 6px 13px;
+    }
+    pre {
+      background: #161b22;
+      border: 2px solid cadetblue;
+      color: burlywood;
+      padding: 18px;
+      line-height: 1.5;
+      font-size: 0.8em;
+      @media ${device.XS} {
+        font-size: 0.6em;
+      }
+      @media ${device.S} {
+        font-size: 0.7em;
+      }
     }
 
     .anchor {
@@ -82,6 +116,32 @@ export const S = {
     cursor: pointer;
     &:hover {
       background: burlywood;
+    }
+  `,
+  Tag: styled.div`
+    margin: 40px 0 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    @media ${device.XS} {
+      font-size: 0.7em;
+    }
+    @media ${device.S} {
+      font-size: 0.7em;
+    }
+    @media ${device.M} {
+      font-size: 0.8em;
+    }
+  `,
+  TagTitle: styled.span`
+    color: darkcyan;
+    font-weight: bold;
+  `,
+  TagName: styled.a`
+    color: cadetblue !important;
+    padding: 0 5px;
+    cursor: pointer;
+    &:hover {
+      color: #e8676b !important;
     }
   `,
 };
@@ -117,14 +177,14 @@ export const E = {
   Wrapper: styled.div`
     display: flex;
     justify-content: space-around;
-    margin-top: 4em;
+    margin-top: 2em;
     flex-wrap: wrap;
     color: white;
     @media ${device.XS} {
-      margin-top: 3em;
+      margin-top: 1em;
     }
     @media ${device.M} {
-      margin-top: 4em;
+      margin-top: 1em;
     }
   `,
   Item: styled.div`
@@ -139,7 +199,15 @@ export const E = {
   `,
   Text: styled.span`
     margin-left: 13px;
-    font-size: 1.4rem;
+    @media ${device.XS} {
+      font-size: 1rem;
+    }
+    @media ${device.S} {
+      font-size: 1rem;
+    }
+    @media ${device.M} {
+      font-size: 1.4rem;
+    }
   `,
   TextNumber: styled.span`
     margin-top: 10px;
@@ -151,8 +219,8 @@ export const E = {
     align-items: center;
     padding: 0 10px;
     border: 3px solid;
-    border-color: ${(props) => (props.active ? 'coral' : 'transparent')};
-    background: ${(props) => (props.active ? 'coral' : '')};
+    border-color: ${(props) => (props.active ? "coral" : "transparent")};
+    background: ${(props) => (props.active ? "coral" : "")};
     cursor: pointer;
     &:hover {
       border-color: coral;
@@ -165,7 +233,7 @@ export const F = {
     position: relative;
     height: 550px;
     width: 550px;
-    margin: 80px auto;
+    margin: auto;
     background: #ffffff 0% 0% no-repeat padding-box;
     border-radius: 12px;
     box-shadow: 0px 3px 6px #00000029;
@@ -199,7 +267,7 @@ export const F = {
   NameInput: styled.input`
     border-radius: 10px;
     margin-top: 40px;
-    border: ${(props) => props.error ? '2px solid red': '2px solid coral'};
+    border: ${(props) => (props.error ? "2px solid red" : "2px solid coral")};
     padding: 4px 10px;
     outline: none;
   `,
@@ -208,7 +276,7 @@ export const F = {
     border-radius: 10px;
     margin-top: 30px;
     height: 150px;
-    border: ${(props) => props.error ? '2px solid red': '2px solid coral'};
+    border: ${(props) => (props.error ? "2px solid red" : "2px solid coral")};
     outline: none;
     font-size: 23px;
     line-height: 1.5;
@@ -219,6 +287,7 @@ export const F = {
   Btn: styled.button`
     margin: 50px 25px 0;
     border-radius: 100px;
+    border-width: 0;
     background: darksalmon;
     border-color: darksalmon;
     outline: none !important;

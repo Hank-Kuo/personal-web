@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
-import Cube from '../../components/Cube';
+import React, { Component } from "react";
+import Cube from "../../components/Cube";
 
-import { S, T, C } from './styles';
+import { S, T } from "./styles";
 
-import SelfieIMG from '../../assets/images/IMG_4384_1.png';
-import NTUSTIMG from '../../assets/images/TaiwanTech_Logo.png';
-import FJUIMG from '../../assets/images/FJU_Logo.png';
-
-import DATA from '../../data';
-import Progress from '../../core/hoc/progress';
+import DATA from "../../assets/data/personal";
+import progress from "../../core/hoc/progress";
 
 class About extends Component {
   constructor(props) {
@@ -17,21 +13,23 @@ class About extends Component {
       timeLineCss: -1,
     };
   }
+
   handleHover = (e) => {
-    const id = e.target.id;
+    const { id } = e.target;
     this.setState(() => ({ timeLineCss: id }));
   };
+
   handleOutHover = () => {
     this.setState(() => ({ timeLineCss: -1 }));
   };
 
   renderProgressbar = (name, step, label) => {
-    var activeBall = [];
-    var inactiveBall = [];
-    for (var i = 0; i < step; i++) {
+    const activeBall = [];
+    const inactiveBall = [];
+    for (let i = 0; i < step; i += 1) {
       activeBall.push(<S.Progressball active key={i} />);
     }
-    for (var j = 0; j < 10 - step; j++) {
+    for (let j = 0; j < 10 - step; j += 1) {
       inactiveBall.push(<S.Progressball key={j} />);
     }
     return (
@@ -47,53 +45,53 @@ class About extends Component {
   };
 
   renderTimeLine = () => {
+    const { timeLineCss } = this.state;
     return (
       <T.TimeLineBox>
-        {DATA.experiences.map((values, key) => {
-          return (
-            <T.TimeLineItem>
-              <T.TimeLineHeader>
-                <T.TimeLineDate
-                  id={key}
-                  onMouseOver={this.handleHover}
-                  onMouseOut={this.handleOutHover}
-                  hover={this.state.timeLineCss === key}
-                >
+        {DATA.experiences.map((values, key) => (
+          <T.TimeLineItem>
+            <T.TimeLineHeader>
+              <T.TimeLineDate
+                id={key}
+                onMouseOver={this.handleHover}
+                onMouseOut={this.handleOutHover}
+                hover={timeLineCss === key}
+              >
+                {values.time}
+              </T.TimeLineDate>
+              <T.TimeLineMark
+                id={key}
+                onMouseOver={this.handleHover}
+                onMouseOut={this.handleOutHover}
+                hover={timeLineCss === key}
+              />
+            </T.TimeLineHeader>
+            <T.TimeLineContent>
+              <T.TimeLineTitle
+                id={key}
+                onMouseOver={this.handleHover}
+                onMouseOut={this.handleOutHover}
+                hover={timeLineCss === key}
+              >
+                {values.name}
+              </T.TimeLineTitle>
+              <T.TimeLineInnerBox>
+                <T.TimeLineDate1>
+                  <T.TimeLineBold>時間: </T.TimeLineBold>
                   {values.time}
-                </T.TimeLineDate>
-                <T.TimeLineMark
-                  id={key}
-                  onMouseOver={this.handleHover}
-                  onMouseOut={this.handleOutHover}
-                  hover={this.state.timeLineCss === key}
-                />
-              </T.TimeLineHeader>
-              <T.TimeLineContent>
-                <T.TimeLineTitle
-                  id={key}
-                  onMouseOver={this.handleHover}
-                  onMouseOut={this.handleOutHover}
-                  hover={this.state.timeLineCss === key}
-                >
-                  {values.name}
-                </T.TimeLineTitle>
-                <T.TimeLineInnerBox>
-                  <T.TimeLineDate1>
-                    <T.TimeLineBold>時間: </T.TimeLineBold>
-                    {values.time}
-                  </T.TimeLineDate1>
-                  <T.TimeLinePosition>
-                    <T.TimeLineBold>職位: </T.TimeLineBold>
-                    {values.position}
-                  </T.TimeLinePosition>
-                  <T.TimeLineInfo>
-                    <T.TimeLineBold>內容: </T.TimeLineBold> {values.content}
-                  </T.TimeLineInfo>
-                </T.TimeLineInnerBox>
-              </T.TimeLineContent>
-            </T.TimeLineItem>
-          );
-        })}
+                </T.TimeLineDate1>
+                <T.TimeLinePosition>
+                  <T.TimeLineBold>職位: </T.TimeLineBold>
+                  {values.position}
+                </T.TimeLinePosition>
+                <T.TimeLineInfo>
+                  <T.TimeLineBold>內容: </T.TimeLineBold>
+                  {values.content}
+                </T.TimeLineInfo>
+              </T.TimeLineInnerBox>
+            </T.TimeLineContent>
+          </T.TimeLineItem>
+        ))}
       </T.TimeLineBox>
     );
   };
@@ -105,7 +103,7 @@ class About extends Component {
           <S.HeaderSection>
             <S.HeaderBox>
               <S.SelfieBox>
-                <S.SelfieImg src={SelfieIMG} alt="" />
+                <S.SelfieImg src={DATA.profile.img} alt="" />
               </S.SelfieBox>
               <S.AboutMeBox>
                 <S.Title>ABOUT ME</S.Title>
@@ -119,16 +117,10 @@ class About extends Component {
                   learning new things.
                 </S.SubTitle>
                 <S.BtnList>
-                  <S.ResumeBtn
-                    href="https://drive.google.com/file/d/11W6T2CcVACc3fZ3uAw96-G_fdOU1dtlK/view"
-                    target="_blank"
-                  >
+                  <S.ResumeBtn href={DATA.link.resume_en} target="_blank">
                     RESUME
                   </S.ResumeBtn>
-                  <S.ResumeBtn
-                    href="https://drive.google.com/file/d/12EJS9kQi860SasraIJNW59a-RU2qbzjd/view"
-                    target="_blank"
-                  >
+                  <S.ResumeBtn href={DATA.link.resume_zh} target="_blank">
                     履歷
                   </S.ResumeBtn>
                 </S.BtnList>
@@ -141,24 +133,22 @@ class About extends Component {
             <S.ProfileBox>
               <S.ProfileLeftBox>
                 <S.ProfileSubTitle>FULLNAME</S.ProfileSubTitle>
-                <S.ProfileText>郭鎮源 (Hank)</S.ProfileText>
+                <S.ProfileText>{DATA.profile.fullname}</S.ProfileText>
                 <S.ProfileSubTitle>MAJOR</S.ProfileSubTitle>
-                <S.ProfileText>Information management</S.ProfileText>
+                <S.ProfileText>{DATA.profile.major}</S.ProfileText>
                 <S.ProfileSubTitle>EMAIL</S.ProfileSubTitle>
-                <S.ProfileText>asdf024681029@gmail.com</S.ProfileText>
+                <S.ProfileText>{DATA.profile.email}</S.ProfileText>
                 <S.ProfileSubTitle>PROFESSION</S.ProfileSubTitle>
-                <S.ProfileText>Student(Master degree)</S.ProfileText>
+                <S.ProfileText>{DATA.profile.profession}</S.ProfileText>
                 <S.ProfileSubTitle>CURRENTLY CITY</S.ProfileSubTitle>
-                <S.ProfileText>Taiwan</S.ProfileText>
+                <S.ProfileText>{DATA.profile.currentlyCity}</S.ProfileText>
               </S.ProfileLeftBox>
               <S.ProfileRightBox>
-                {DATA.profile.languages.map((values) => {
-                  return this.renderProgressbar(
-                    values.name,
-                    values.score,
-                    values.level,
-                  );
-                })}
+                {DATA.profile.languages.map((values) => this.renderProgressbar(
+                  values.name,
+                  values.score,
+                  values.level,
+                ))}
               </S.ProfileRightBox>
             </S.ProfileBox>
           </S.ProfileSection>
@@ -167,33 +157,35 @@ class About extends Component {
             <S.Splitter />
             <S.EducationBox>
               <S.EducationInnerBox>
-                <S.EducationImg src={NTUSTIMG} alt="" />
+                <S.EducationImg src={DATA.education.master.img} alt="" />
                 <S.EducationContent>
                   <S.EducationTitle>
-                    National Taiwan University of Science and Technology
+                    {DATA.education.master.college}
                   </S.EducationTitle>
                   <S.EducationInnerContent>
                     <S.EducationText>Degree: Master</S.EducationText>
-                    <S.EducationText>Year: 2020.9 - Now</S.EducationText>
                     <S.EducationText>
-                      Major: Information Management
+                      {`Year: ${DATA.education.master.years}`}
+                    </S.EducationText>
+                    <S.EducationText>
+                      {`Major: ${DATA.education.master.major}`}
                     </S.EducationText>
                   </S.EducationInnerContent>
                 </S.EducationContent>
               </S.EducationInnerBox>
               <S.EducationInnerBox>
-                <S.EducationImg src={FJUIMG} alt="" />
+                <S.EducationImg src={DATA.education.bachelor.img} alt="" />
                 <S.EducationContent>
                   <S.EducationTitle>
-                    Fu Jen Catholic University
+                    {DATA.education.bachelor.college}
                   </S.EducationTitle>
                   <S.EducationInnerContent>
                     <S.EducationText>Degree: Bachelor</S.EducationText>
-                    <S.EducationText>Year: 2016.9 - 2020.6</S.EducationText>
+                    <S.EducationText>{`Year: ${DATA.education.bachelor.years}`}</S.EducationText>
                     <S.EducationText>
-                      Major: Information Management
+                      {`Major: ${DATA.education.bachelor.major}`}
                     </S.EducationText>
-                    <S.EducationText>Minor: French</S.EducationText>
+                    <S.EducationText>{`Minor: ${DATA.education.bachelor.minor}`}</S.EducationText>
                   </S.EducationInnerContent>
                 </S.EducationContent>
               </S.EducationInnerBox>
@@ -208,23 +200,21 @@ class About extends Component {
             <S.Title>SKILLS</S.Title>
             <S.Splitter />
             <S.SkillBox>
-              {DATA.skills.map((values) => {
-                return (
-                  <Cube
-                    key={values.name}
-                    abbre={values.abbre}
-                    text={values.name}
-                    color1={values.color1}
-                    color2={values.color2}
-                    color3={values.color3}
-                    color4={values.color4}
-                    color5={values.color5}
-                    color6={values.color6}
-                    textColor={values.textColor}
-                    abbreColor="white"
-                  />
-                );
-              })}
+              {DATA.skills.map((values) => (
+                <Cube
+                  key={values.name}
+                  abbre={values.abbre}
+                  text={values.name}
+                  color1={values.color1}
+                  color2={values.color2}
+                  color3={values.color3}
+                  color4={values.color4}
+                  color5={values.color5}
+                  color6={values.color6}
+                  textColor={values.textColor}
+                  abbreColor="white"
+                />
+              ))}
             </S.SkillBox>
           </S.SkillSection>
         </S.Box>
@@ -233,13 +223,4 @@ class About extends Component {
   }
 }
 
-export default Progress(About);
-
-/*
-            <div>
-            <C.skillName>HTML</C.skillName>
-            <C.skillbar>
-              <C.skillPer></C.skillPer>
-            </C.skillbar>
-          </div>
-*/
+export default progress(About);
