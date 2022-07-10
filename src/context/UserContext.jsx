@@ -16,6 +16,8 @@ class UserProvider extends Component {
         last_name: "",
         account: "",
         role: "",
+        uuid: "",
+        email: "",
       },
     };
   }
@@ -32,14 +34,17 @@ class UserProvider extends Component {
       isLoading: true,
     }));
     setUserCookies(data);
+
     this.setState(() => ({
       isLoading: false,
       isAuthed: true,
       user: {
-        account: data.account,
-        first_name: data.first_name,
-        last_name: data.last_name,
-        role: data.role,
+        account: data.user.account,
+        first_name: data.user.first_name,
+        last_name: data.user.last_name,
+        role: data.user.role,
+        uuid: data.user.uuid,
+        email: data.user.email,
       },
     }));
   };

@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import progress from "../../core/hoc/progress";
 import { S } from "./styles";
 
+import { healthzAPI } from "../../api";
+
 import IMG from "../../assets/images/home.jpg";
 import IMG_COMPRESS from "../../assets/images/home_compress.jpg";
 
@@ -13,6 +15,10 @@ class Index extends Component {
   }
 
   componentDidMount() {
+    console.log("render");
+    healthzAPI.fetch().then((v) => {
+      console.log(v);
+    });
     setTimeout(() => {
       this.setState(() => ({ img: IMG }));
     }, 1500);

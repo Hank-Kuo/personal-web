@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import { withUserConsumer } from "../../context/UserContext";
 import { S, I } from "./styles";
 
-import { loginAPI } from "../../api";
+import { authAPI } from "../../api";
 import { LoginSchema } from "../../core/utils/validateForm";
 import FocusError from "../../core/utils/focusError";
 
@@ -124,10 +124,10 @@ class Login extends Component {
   };
 
   onSubmit = (values) => {
-    loginAPI
-      .post(values)
-      .then((vals) => {
-        this.props.userContext.setUserInfo(vals);
+    authAPI
+      .login(values)
+      .then((v) => {
+        this.props.userContext.setUserInfo(v.data);
       })
       .catch((err) => {
         this.setState(() => ({ errMsg: err.response.data.message }));

@@ -1,10 +1,10 @@
-import { get, post } from "./config";
+import { fetch, post } from "./config";
 
 export const commentsAPI = {
-  get(id) {
-    return get("/comments", id);
+  fetch(params) {
+    return fetch("/comments", params);
   },
   post(data) {
-    return post("/comments/", data);
+    return post("/comment", data);
   },
 };

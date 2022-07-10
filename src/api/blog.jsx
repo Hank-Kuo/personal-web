@@ -1,18 +1,16 @@
-import {
-  fetch, get, post, put,
-} from "./config";
+import { fetch, post } from "./config";
 
 export const blogAPI = {
   fetch() {
-    return fetch("/blog/");
+    return fetch("/blogs");
   },
   get(id) {
-    return get("/blog", id);
+    return fetch(`/blog/${id}`);
   },
   post(data) {
-    return post("/auth/blog", data);
+    return post("/blog", data);
   },
-  put(id, data) {
-    return put(`/blog/${id}`, data);
+  visitor(params) {
+    return fetch("/visit", params);
   },
 };

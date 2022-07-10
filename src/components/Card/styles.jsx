@@ -57,6 +57,7 @@ export const S = {
   Content: styled.div`
     padding: 25px 25px 35px 25px;
     text-align: center;
+    height: 200px;
   `,
   Time: styled.time`
     width: 58px;
@@ -95,11 +96,20 @@ export const S = {
     font-weight: 700;
     text-transform: uppercase;
     transition: color 0.15s linear 0s;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
     &:hover {
       color: #e8676b;
     }
   `,
   Info: styled.div`
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
     font-size: 13px;
     line-height: 1.3;
     color: lightslategrey;

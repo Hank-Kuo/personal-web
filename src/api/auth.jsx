@@ -1,16 +1,7 @@
-import { fetch, post } from "./config";
+import { post } from "./config";
 
 export const authAPI = {
-  fetch(paramObj) {
-    return fetch("/auth/login", paramObj);
-  },
-  post(data) {
-    return post("/auth/login", data);
-  },
-};
-
-export const loginAPI = {
-  post(data) {
+  login(data) {
     return post("/login", data);
   },
 };

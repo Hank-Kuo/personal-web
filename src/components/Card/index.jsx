@@ -5,11 +5,10 @@ import { S } from "./styles";
 const Img = React.lazy(() => import("./img"));
 
 export default function (props) {
-  const time = moment(props.create_time).format("MMM DD").split(" ");
+  const time = moment(props.createTime).format("MMM DD").split(" ");
   const month = time[0];
   const days = time[1];
   const url = `/blog/article/${props.id}`;
-  const tags = ["#Python", "#NLP"];
   return (
     <S.Wrapper>
       <S.CardLink href={url}>
@@ -25,15 +24,15 @@ export default function (props) {
               <S.Month>{month}</S.Month>
             </S.Time>
             <S.Tag>
-              <span>{tags.join(" ")}</span>
+              <span>
+                {props.tags
+                  .slice(0, 2)
+                  .map((v) => `#${v.name}`)
+                  .join(" ")}
+              </span>
             </S.Tag>
-            <S.Title>
-              <span>{props.title}</span>
-            </S.Title>
-            <S.Info>
-              VIEW:
-              {props.view}
-            </S.Info>
+            <S.Title>{props.title}</S.Title>
+            <S.Info>{`VIEW: ${props.view}`}</S.Info>
           </S.Content>
         </S.Box>
       </S.CardLink>

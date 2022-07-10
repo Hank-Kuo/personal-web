@@ -19,7 +19,7 @@ class Blog extends Component {
     blogAPI
       .fetch()
       .then((values) => {
-        this.setState(() => ({ data: values.data }));
+        this.setState(() => ({ data: values.data.blogs }));
       })
       .catch((e) => {
         this.props.errorContext.setError(e);
@@ -39,8 +39,8 @@ class Blog extends Component {
                   key={values.id}
                   id={values.id}
                   title={values.title}
-                  createTime={values.create_time}
-                  tags={values.tag}
+                  createTime={values.created_at}
+                  tags={values.tags}
                   img={values.img_link}
                   view={values.visitor}
                 />

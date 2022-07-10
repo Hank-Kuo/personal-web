@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import moment from "moment";
+import moment from "moment-timezone";
 import { Formik } from "formik";
 
 // component
 import Comment from "../../components/Comment";
 import Modal from "../../components/Modal";
 import Popup from "../../components/Popup";
+import InfiniteScroll from "../../components/InfinitScroll";
+
 import {
   S, C, E, F,
 } from "./styles";
@@ -25,25 +27,24 @@ import { EMOJI_DATA } from "../../core/constants/emoji";
 class Article extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       html: null,
       emoji: -1,
       emojiData: {},
-      commentList: [],
+      newCommentList: [],
       visible: false,
     };
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    Promise.all([commentsAPI.get(id), emojiAPI.get(id), blogAPI.get(id)])
-      .then(([result1, result2, result3]) => {
-        const commentList = result1.data;
-        const emojiData = result2.data;
-        const { html } = result3.data;
+    blogAPI
+      .get(id)
+      .then((v) => {
+        const { html, emoji } = v.data;
         this.setState(() => ({
-          commentList,
-          emojiData: { ...emojiData },
+          emojiData: emoji,
           html,
         }));
       })
@@ -51,12 +52,15 @@ class Article extends Component {
         this.props.errorContext.setError(e);
       });
 
+    // init emoji from cookies
     const emoji = getEmojiCookies(id);
     if (emoji) {
       this.setState(() => ({ emoji }));
     }
+
+    // init visitor from cookies
     if (setVisitorCookies(id)) {
-      blogAPI.put(id, { visitor: true }).catch((e) => {
+      blogAPI.visitor({ blogId: id }).catch((e) => {
         this.props.errorContext.setError(e);
       });
     }
@@ -82,13 +86,41 @@ class Article extends Component {
     if (prevEmoji) {
       data = { ...data, [prevEmoji]: emojiData[prevEmoji] - 1 };
     }
-    emojiAPI.put(id, data).then(() => {
+
+    emojiAPI.put(id, data).then((d) => {
+      this.setState(() => ({
+        emojiData: d.data,
+      }));
       setEmojiCookies(id, name);
-      emojiAPI.get(id).then((result) => {
-        this.setState(() => ({
-          emojiData: { ...result.data },
-        }));
+    });
+  };
+
+  callAPI = async (page = 1) => {
+    const { id } = this.props.match.params;
+    const data = await commentsAPI
+      .fetch({
+        blogId: id,
+        page,
+      })
+      .then((v) => v.data)
+      .catch((e) => {
+        this.props.errorContext.setError(e);
       });
+
+    return [data.comments, data.meta];
+  };
+
+  onSubmit = (values, { resetForm }) => {
+    const { id } = this.props.match.params;
+    const idInt = parseInt(id, 10);
+    const data = { blog_id: idInt, ...values };
+
+    commentsAPI.post(data).then((v) => {
+      this.setState((prev) => ({
+        newCommentList: [v.data, ...prev.newCommentList],
+      }));
+      this.onClose();
+      resetForm();
     });
   };
 
@@ -125,13 +157,30 @@ class Article extends Component {
     );
   };
 
-  renderComments = () => {
-    const { commentList } = this.state;
-    return (
-      <C.Wrapper>
-        <C.Title>Comments</C.Title>
-        {commentList.map((values, key) => {
-          const time = moment(values.create_time).endOf("day").fromNow();
+  renderComments = () => (
+    <C.Wrapper>
+      <C.Title>Comments</C.Title>
+      {this.state.newCommentList.map((values, key) => {
+        const t = moment.tz(values.created_at, "UTC").tz("Asia/Taipei");
+        const time = t.fromNow();
+
+        return (
+          <Comment
+            key={key}
+            name={values.name}
+            time={time}
+            content={values.comment}
+            character={values.character}
+          />
+        );
+      })}
+
+      <InfiniteScroll
+        name="comments"
+        api={this.callAPI}
+        render={(_, data) => data.map((values, key) => {
+          const t = moment.tz(values.created_at, "UTC").tz("Asia/Taipei");
+          const time = t.fromNow();
           return (
             <Comment
               key={key}
@@ -142,29 +191,9 @@ class Article extends Component {
             />
           );
         })}
-      </C.Wrapper>
-    );
-  };
-
-  onSubmit = (values, { resetForm }) => {
-    const { id } = this.props.match.params;
-    const idInt = parseInt(id, 10);
-    const data = { blog_id: idInt, ...values };
-
-    commentsAPI
-      .post(data)
-      .then(() => {
-        this.onClose();
-        resetForm();
-      })
-      .then(() => {
-        commentsAPI.get(id).then((result) => {
-          this.setState(() => ({
-            commentList: result.data,
-          }));
-        });
-      });
-  };
+      />
+    </C.Wrapper>
+  );
 
   renderModal = () => (
     <Modal visible={this.state.visible} onClose={this.onClose}>

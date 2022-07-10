@@ -25,16 +25,16 @@ export const getEmojiCookies = (id) => {
 export const setUserCookies = (data) => {
   const cookies = new Cookies();
   const date = new Date();
-  date.setTime(date.getTime() + 8 * 60 * 60 * 1000); // 8 hrs
+  date.setTime(date.getTime() + data.expired_in * 1000); // 8 hrs
 
-  if (cookies.get("token") === undefined) {
-    cookies.set("token", data, { expires: date });
-    console.log("set token");
+  if (cookies.get("user") === undefined) {
+    cookies.set("user", data, { expires: date });
+    console.log("set user");
   }
 };
 
 export const getUserCookies = () => {
   const cookies = new Cookies();
-  const token = cookies.get("token");
-  return token;
+  const user = cookies.get("user");
+  return user;
 };

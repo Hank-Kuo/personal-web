@@ -3,7 +3,7 @@ import * as Yup from "yup";
 export const CreateBlogSchema = Yup.object().shape({
   blogName: Yup.string().required("Blog Name 為必填"),
   blogURL: Yup.string().url("Not valid website name").required("Blog URL 為必填"),
-  tags: Yup.string().required("tags 為必填"),
+  tags: Yup.array().min(1).required("tags 為必填"),
   imgURL: Yup.string().url("Not valid website name").required("IMG URL 為必填"),
 });
 

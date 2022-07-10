@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
 
+import Dropdown from "../../components/Dropdown";
 import { S } from "./styles";
 
 import { CreateBlogSchema } from "../../core/utils/validateForm";
@@ -37,12 +38,14 @@ class CreateBlog extends Component {
   };
 
   onSubmit = (values, { resetForm }) => {
+    console.log(values);
     const data = {
       title: values.blogName,
-      tag: values.tags,
+      tags: values.tags.split(","),
       img_link: values.imgURL,
       link: values.blogURL,
     };
+
     blogAPI
       .post(data)
       .then(() => {
@@ -67,7 +70,7 @@ class CreateBlog extends Component {
             blogName: "",
             blogURL: "",
             imgURL: "",
-            tags: "",
+            tags: [],
           }}
           validateOnChange={false}
           validateOnBlur={false}
@@ -82,6 +85,7 @@ class CreateBlog extends Component {
                 </S.FormLabel>
                 <S.Input
                   type="text"
+                  id="blogName"
                   name="blogName"
                   autoComplete="off"
                   autoFocus
@@ -99,15 +103,22 @@ class CreateBlog extends Component {
                 <S.FormLabel htmlFor="tags" active={tagsFocus}>
                   Tags
                 </S.FormLabel>
-                <S.Input
+                {/* <S.Input
                   type="text"
-                  name="tags"
+                  name="tags1"
                   autoComplete="off"
                   value={formikProps.values.tags}
                   onFocus={this._onFocus}
                   onBlur={this._onBlur}
                   onChange={formikProps.handleChange}
                   error={formikProps.errors.tags}
+                /> */}
+                <Dropdown
+                  name="tags"
+                  value={formikProps.values.tags}
+                  onChange={(data) => {
+                    formikProps.setFieldValue("tags", data);
+                  }}
                 />
               </S.Item>
               {formikProps.errors.tags ? (
@@ -119,6 +130,7 @@ class CreateBlog extends Component {
                 </S.FormLabel>
                 <S.Input
                   type="text"
+                  id="blogURL"
                   name="blogURL"
                   autoComplete="off"
                   value={formikProps.values.blogURL}
@@ -137,6 +149,7 @@ class CreateBlog extends Component {
                 </S.FormLabel>
                 <S.Input
                   type="text"
+                  id="imgURL"
                   name="imgURL"
                   autoComplete="off"
                   value={formikProps.values.imgURL}

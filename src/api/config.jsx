@@ -10,7 +10,7 @@ axios.interceptors.request.use(
   async (config) => {
     const userInfo = await getUserCookies();
     if (userInfo) {
-      config.headers.Authorization = `Bearer ${userInfo.token}`;
+      config.headers.Authorization = `Bearer ${userInfo.access_token}`;
     }
     config.headers["Access-Control-Allow-Origin"] = "*";
     return config;
@@ -26,20 +26,7 @@ axios.interceptors.response.use(
 export function fetch(url, params = {}) {
   return new Promise((resolve, reject) => {
     axios
-      .get(url, { params })
-      .then((response) => {
-        resolve(response.data);
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  });
-}
-
-export function get(url, id) {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(`${url}/${id}`)
+      .get(url, { params: { ...params } })
       .then((response) => {
         resolve(response.data);
       })

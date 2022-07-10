@@ -48,7 +48,7 @@ export const S = {
     height: 80px;
     padding: 5px;
     border-radius: 10px;
-    opacity: 0;
+    transform: translate3d(2000px, 0, 0);
     animation: ${(props) => {
     if (props.show) {
       return bounceInRight;
@@ -56,8 +56,8 @@ export const S = {
     return props.close ? bounceOutRight : null;
   }}
       1.5s linear;
-
     animation-fill-mode: forwards;
+
     cursor: pointer;
   `,
   Icon: styled.img`

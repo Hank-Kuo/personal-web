@@ -20,7 +20,7 @@ class ErrorProvider extends Component {
     let msg = "";
     switch (err.response.status) {
       case 404:
-        msg = "找不到該頁面";
+        msg = "找不到相關路徑";
         break;
       case 500:
         msg = "伺服器出錯";
@@ -59,6 +59,7 @@ class ErrorProvider extends Component {
         <Toast
           message={this.state.message}
           show={this.state.isErr}
+          close={this.state.close}
           onClick={() => {
             this.setState(() => ({
               isErr: false,

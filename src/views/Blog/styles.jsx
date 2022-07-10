@@ -20,7 +20,7 @@ export const S = {
   `,
   Title: styled.h1`
     text-align: center;
-    font-family: 'Fredoka One', cursive;
+    font-family: "Fredoka One", cursive;
     font-size: 5rem;
     font-weight: bold;
     color: snow;
@@ -54,6 +54,7 @@ export const S = {
     }
   `,
   Box: styled.div`
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
 
@@ -70,7 +71,7 @@ export const S = {
       width: 100%;
       justify-content: center;
     }
-    
+
     @media ${device.M} {
       > * + * {
         flex: 1 0 61%;
