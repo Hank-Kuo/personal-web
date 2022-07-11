@@ -10,27 +10,29 @@ class ErrorProvider extends Component {
     super(props);
     this.state = {
       isErr: false,
-      message: "出現神奇的錯誤",
+      message: "",
       detail: "",
       close: false,
     };
   }
 
   setError = (err) => {
-    let msg = "";
-    switch (err.response.status) {
-      case 404:
-        msg = "找不到相關路徑";
-        break;
-      case 500:
-        msg = "伺服器出錯";
-        break;
-      case 503:
-        msg = "服務失效";
-        break;
-      default:
-        msg = "出現神奇的錯誤";
-        break;
+    let msg = "神秘的錯誤突然現身";
+    if (err.response) {
+      switch (err.response.status) {
+        case 404:
+          msg = "找不到相關路徑";
+          break;
+        case 500:
+          msg = "伺服器出錯";
+          break;
+        case 503:
+          msg = "服務失效";
+          break;
+        default:
+          msg = "出現神奇的錯誤";
+          break;
+      }
     }
 
     this.setState(() => ({

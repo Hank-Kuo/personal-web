@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 import { S } from "./styles";
 
-const ITEMS = ["12", "123", "124", "125", "126"];
-
 class Dropdown extends Component {
   constructor(props) {
     super(props);
@@ -22,10 +20,8 @@ class Dropdown extends Component {
     document.removeEventListener("mousedown", this.handleClickOutside);
   }
 
-  setValue = (value) => {
-    this.props.onChange(
-      this.props.value.includes(value) ? this.props.value : [...this.props.value, value],
-    );
+  addValue = (value) => {
+    this.props.onChange([...this.props.value, value]);
   };
 
   onChange = (e) => {
@@ -34,7 +30,9 @@ class Dropdown extends Component {
       this.setState(() => ({
         value: "",
       }));
-      this.setValue(value.slice(0, value.length - 1));
+      if (!this.props.value.includes(value)) {
+        this.addValue(value.slice(0, value.length - 1));
+      }
 
       return;
     }
@@ -61,7 +59,7 @@ class Dropdown extends Component {
 
   render() {
     return (
-      <S.Wrapper ref={this.wrapperRef}>
+      <S.Wrapper ref={this.wrapperRef} error={this.props.error}>
         <S.Label
           active={
             this.state.focus || this.props.value.length !== 0 || this.state.value.length !== 0
@@ -69,7 +67,7 @@ class Dropdown extends Component {
         >
           Tags
         </S.Label>
-        <S.Box htmlFor={this.props.name}>
+        <S.Box htmlFor={`${this.props.name}-dropdown`}>
           <S.TagBox>
             {this.props.value.map((v) => (
               <S.Tag>{v}</S.Tag>
@@ -77,8 +75,8 @@ class Dropdown extends Component {
           </S.TagBox>
           <S.Input
             type="text"
-            id={this.props.name}
-            name={this.props.name}
+            id={`${this.props.name}-dropdown`}
+            name={`${this.props.name}-dropdown`}
             autoComplete="off"
             value={this.state.value}
             onChange={this.onChange}
@@ -88,23 +86,7 @@ class Dropdown extends Component {
               this.state.focus || this.props.value.length === 0 || this.state.value.length !== 0
             }
           />
-          <S.Container active={this.state.focus}>
-            {ITEMS.map((v, i) => (
-              <S.Item
-                key={i}
-                active={this.props.value.includes(v)}
-                onClick={() => {
-                  if (this.props.value.includes(v)) {
-                    this.props.onChange(this.props.value.filter((value) => value !== v));
-                  } else {
-                    this.setValue(v);
-                  }
-                }}
-              >
-                {v}
-              </S.Item>
-            ))}
-          </S.Container>
+          <S.Container active={this.state.focus}>{this.props.renderTagsList()}</S.Container>
         </S.Box>
       </S.Wrapper>
     );

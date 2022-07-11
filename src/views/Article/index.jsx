@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import moment from "moment-timezone";
 import { Formik } from "formik";
 
 // component
@@ -160,37 +159,28 @@ class Article extends Component {
   renderComments = () => (
     <C.Wrapper>
       <C.Title>Comments</C.Title>
-      {this.state.newCommentList.map((values, key) => {
-        const t = moment.tz(values.created_at, "UTC").tz("Asia/Taipei");
-        const time = t.fromNow();
-
-        return (
-          <Comment
-            key={key}
-            name={values.name}
-            time={time}
-            content={values.comment}
-            character={values.character}
-          />
-        );
-      })}
+      {this.state.newCommentList.map((values, key) => (
+        <Comment
+          key={key}
+          name={values.name}
+          createdTime={values.created_at}
+          content={values.comment}
+          character={values.character}
+        />
+      ))}
 
       <InfiniteScroll
         name="comments"
         api={this.callAPI}
-        render={(_, data) => data.map((values, key) => {
-          const t = moment.tz(values.created_at, "UTC").tz("Asia/Taipei");
-          const time = t.fromNow();
-          return (
-            <Comment
-              key={key}
-              name={values.name}
-              time={time}
-              content={values.comment}
-              character={values.character}
-            />
-          );
-        })}
+        render={(_, data) => data.map((values, key) => (
+          <Comment
+            key={key}
+            name={values.name}
+            createdTime={values.created_at}
+            content={values.comment}
+            character={values.character}
+          />
+        ))}
       />
     </C.Wrapper>
   );

@@ -75,4 +75,14 @@ export const S = {
     color: darkred;
     font-size: 0.7em;
   `,
+  DropdownItem: styled.div`
+    padding: 0 20px;
+    cursor: pointer;
+    height: 50px;
+    background: ${(props) => (props.active ? "rgb(195, 123, 80)" : "none")};
+    border-bottom: 1px solid white;
+    &:hover {
+      background: rgb(195, 123, 80);
+    }
+  `,
 };

@@ -1,13 +1,15 @@
 import React from "react";
-import moment from "moment";
+import moment from "moment-timezone";
+
 import { S } from "./styles";
 
 const Img = React.lazy(() => import("./img"));
 
 export default function (props) {
-  const time = moment(props.createTime).format("MMM DD").split(" ");
+  const time = moment.tz(props.createTime, "UTC").tz("Asia/Taipei").format("MMM DD").split(" ");
   const month = time[0];
   const days = time[1];
+
   const url = `/blog/article/${props.id}`;
   return (
     <S.Wrapper>

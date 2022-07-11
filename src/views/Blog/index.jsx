@@ -1,50 +1,50 @@
 import React, { Component } from "react";
 
-import progress from "../../core/hoc/progress";
 import Card from "../../components/Card";
+import progress from "../../core/hoc/progress";
+import InfiniteScroll from "../../components/InfinitScroll";
 import { S } from "./styles";
 
 import { blogAPI } from "../../api";
 import { withErrorConsumer } from "../../context/ErrorContext";
 
 class Blog extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-    };
-  }
-
-  componentDidMount() {
-    blogAPI
-      .fetch()
-      .then((values) => {
-        this.setState(() => ({ data: values.data.blogs }));
+  callAPI = async (page = 1) => {
+    const data = await blogAPI
+      .fetch({
+        page,
       })
+      .then((v) => v.data)
       .catch((e) => {
         this.props.errorContext.setError(e);
       });
-  }
+
+    return [data.blogs, data.meta];
+  };
 
   render() {
-    const { data } = this.state;
+    // const { data } = this.state;
     return (
       <S.Wrapper>
         <S.Title>BLOG</S.Title>
         <S.Container>
           <S.ContainerBox>
             <S.Box>
-              {data.map((values) => (
-                <Card
-                  key={values.id}
-                  id={values.id}
-                  title={values.title}
-                  createTime={values.created_at}
-                  tags={values.tags}
-                  img={values.img_link}
-                  view={values.visitor}
-                />
-              ))}
+              <InfiniteScroll
+                name="blogs"
+                api={this.callAPI}
+                render={(_, data) => data.map((values) => (
+                  <Card
+                    key={values.id}
+                    id={values.id}
+                    title={values.title}
+                    createTime={values.created_at}
+                    tags={values.tags}
+                    img={values.img_link}
+                    view={values.visitor}
+                  />
+                ))}
+              />
             </S.Box>
           </S.ContainerBox>
         </S.Container>

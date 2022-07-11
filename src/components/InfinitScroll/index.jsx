@@ -42,10 +42,10 @@ class InfiniteScroll extends Component {
 
   render() {
     return (
-      <div>
+      <>
         {this.props.render(this.state.loading, this.state.data)}
         <div id={`${this.props.name}-list-end`} />
-      </div>
+      </>
     );
   }
 }
