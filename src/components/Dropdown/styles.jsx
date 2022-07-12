@@ -11,12 +11,11 @@ export const S = {
     font-size: 20px;
     background-color: #0a0809;
   `,
-  Box: styled.label`
+  Box: styled.div`
     display: flex;
     margin: 0;
     flex-direction: column;
     width: 100%;
-    overflow: scroll;
     padding: 20px;
     color: white;
   `,
