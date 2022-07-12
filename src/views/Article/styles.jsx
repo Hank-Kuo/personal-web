@@ -86,10 +86,6 @@ export const S = {
       padding: 6px 13px;
     }
     pre {
-      background: #161b22;
-      border: 2px solid cadetblue;
-      color: burlywood;
-      padding: 18px;
       line-height: 1.5;
       font-size: 0.8em;
       @media ${device.XS} {
@@ -97,6 +93,11 @@ export const S = {
       }
       @media ${device.S} {
         font-size: 0.7em;
+      }
+      code {
+        border-radius: 5px;
+        border: 5px solid cadetblue;
+        background: bisque !important;
       }
     }
 

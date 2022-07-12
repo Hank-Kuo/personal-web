@@ -37,14 +37,18 @@ class Article extends Component {
   }
 
   componentDidMount() {
+    window.hljs.highlightAll();
+
     const { id } = this.props.match.params;
     blogAPI
       .get(id)
       .then((v) => {
         const { html, emoji } = v.data;
+        let newHtml = html.replace("<pre>", "<pre><code>");
+        newHtml = newHtml.replace("</pre>", "</code></pre>");
         this.setState(() => ({
           emojiData: emoji,
-          html,
+          html: newHtml,
         }));
       })
       .catch((e) => {
@@ -61,6 +65,15 @@ class Article extends Component {
     if (setVisitorCookies(id)) {
       blogAPI.visitor({ blogId: id }).catch((e) => {
         this.props.errorContext.setError(e);
+      });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.html !== this.state.html) {
+      const preElement = document.querySelectorAll("pre");
+      preElement.forEach((v) => {
+        window.hljs.highlightAll(v);
       });
     }
   }
@@ -226,6 +239,8 @@ class Article extends Component {
   );
 
   render() {
+    console.log(window.hljs);
+
     return (
       <S.Wrapper>
         <S.Box>

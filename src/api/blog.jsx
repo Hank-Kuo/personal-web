@@ -1,8 +1,8 @@
 import { fetch, post } from "./config";
 
 export const blogAPI = {
-  fetch() {
-    return fetch("/blogs");
+  fetch(params) {
+    return fetch("/blogs", params);
   },
   get(id) {
     return fetch(`/blog/${id}`);

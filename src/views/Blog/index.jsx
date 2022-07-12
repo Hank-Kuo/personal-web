@@ -14,8 +14,12 @@ class Blog extends Component {
       .fetch({
         page,
       })
-      .then((v) => v.data)
+      .then((v) => {
+        console.log(v.data);
+        return v.data;
+      })
       .catch((e) => {
+        console.log(e.response);
         this.props.errorContext.setError(e);
       });
 
