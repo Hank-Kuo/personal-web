@@ -45,30 +45,39 @@ export default {
   },
   experiences: [
     {
-      name: "伊雲谷數位科技 eCloudvalley Technology",
-      position: "雲端工程師",
-      time: "2019.7 - 2020.6",
-      content: `主要為開發工程師，透過搭配 Amazon 雲端服務來開發系統，在公司裡參與過三套系統開發
-        ，分別為流量測試系統( 主要分為兩種角色 - Server, Client， Server 會對 Client 發送請求
-        ，確認 Client 是否有成功回覆正確的回應．在 Client 裡，需要自行建構 AWS 架構應付 Server 
-        所發送的流量請求)，內部課程系統( 4 種不同的 Role(super admin, admin, general user, trainer)
-        可操作做不同的操作，並且可自動化開雲端帳戶給學生作為實驗實作)與電商系統(主要販賣課程，且結合內部課程系統
-        作為公司未來主打的系統 - 參與前期)`,
+      name: "TrendMicro",
+      position: "Software Engineer",
+      time: "2022.12 - Now",
+      content: `❖ Research about mail attacks & scenarios. (BEC, impersonation, scam, phishing, spam). \n❖ Experiment to reduce FP email error rate for invitation mail by 69%,, then delivered the solution in production.\n❖ Experiment that detected the impersonate mails about Meta mails, delivered the solution in production. The recall can achieve 85%.
+      `,
     },
     {
-      name: "友達光電股份有限公司 AU Optronics Corporation (AUO)",
-      position: "資料分析工程師 (Data Engineer)",
+      name: "Appier",
+      position: "Software Engineer (Intern)",
+      time: "2022.01 - 2022.08",
+      content: `❖ Debugged client’s Campaigns, then released campaigns to production.\n❖ Delivered datafeed and model’s result to MySQL, then displayed result to demo site (Simulate client’s situation). Add the some features and fix bugs on the demo site.\n❖ Developed API using Node Red, integrated EPA API and MaxMind to identify location, then return UVI (GoeHash & distance measure).\n❖ Designed CMS backend server, developing transform datafeed to csv, and cron job triggers automatically.
+      `,
+    },
+    {
+      name: "Homexin",
+      position: "Frontend Engineer (Intern)",
+      time: "2021.01 - 2022.01",
+      content: `❖ Refactored the frontend’s project architecture to clean code, optimizing the development process.\n❖ Developed frontend’s UI components, using pure css (styled-components) to build custom components .\n❖ Used axios and relay to connect restful API and GraphQL. 
+      `,
+    },
+    {
+      name: "AU Optronics Corporation (AUO)",
+      position: "Data Engineer (Intern)",
       time: "2020.7 - 2020.9",
-      content: `透過收集公司資料庫的機台資料，分析相關因子，確認是否有如預期之對應關係，找出相關性，並且透過現有特
-        徵進行訓練模型，來提前預測機台是否有炸傷的可能性．且後續以利自動化流程，開發排成系統，會將公司公有的
-        資料庫 migrate 到部門內部的資料庫(postgreSQL)，並進行相關的預測．`,
+      content: `❖ Used Regression&Booting model to analyze potential key factor.\n❖ Built data pipeline automatic procedure.
+      `,
     },
     {
-      name: "Home心線上照服媒合平台",
-      position: "前端工程師 (Frontend Engineer)",
-      time: "2021.01 - Now",
-      content: `重構其前端架構、開發新的 UI component、並且優化其專案效能，其中主要透過 React 程式語言進行開發
-        並針對不同需求進行開發`,
+      name: "eCloudvalley Technology",
+      position: "Cloud Engineer (Intern)",
+      time: "2019.7 - 2020.6",
+      content: `❖ Developed AWS Lambda API for object detection using OpenCV. \n❖ Refactored dashboard platform’s frontend, optimized web speed and redesign project structure. \n❖ Built Flow test request system(flask, Django ), like DDOS system combined with AWS services, simulating million requests to test server tolerable.\n❖ Developed E-commerce platform frontend’s components (Typescript react).
+      `,
     },
   ],
   skills: [

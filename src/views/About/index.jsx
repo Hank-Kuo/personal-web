@@ -86,7 +86,7 @@ class About extends Component {
                 </T.TimeLinePosition>
                 <T.TimeLineInfo>
                   <T.TimeLineBold>內容: </T.TimeLineBold>
-                  {values.content}
+                  <p style={{ whiteSpace: "pre-wrap" }} dangerouslySetInnerHTML={{ __html: values.content }} />
                 </T.TimeLineInfo>
               </T.TimeLineInnerBox>
             </T.TimeLineContent>
